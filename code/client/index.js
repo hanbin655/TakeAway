@@ -11,30 +11,34 @@ $(function () {
 
 function renderViewModel() {
     var self = this;
-    this.data = ko.observableArray([]);
-    this.showData = ko.computed(function () {
-        return data().length > 0;
+    self.data = ko.observableArray([]);
+    self.showData = ko.computed(function () {
+        return self.data().length > 0;
     });
-    this.buttonText = ko.computed(function () {
-        if (this.showData()) {
+    self.buttonText = ko.computed(function () {
+        if (self.showData()) {
             return "Clear";
             
         } else {
             return "Get names";
         }
     });
-    this.getList = function () {
-        if (this.data().length > 0) {
-            this.data([]);
+    self.getList = function () {
+        if (self.data().length > 0) {
+            self.data([]);
         } else {
-            var names = [
-            { Forename: 'Bin', Surname: 'Han' },
-            { Forename: 'Zejun', Surname: 'Wu' },
-            { Forename: 'Yan', Surname: 'Li' },
-            { Forename: 'Wenxin', Surname: 'Shi' }];
-
-            this.data(names);
+            callApi("getNameList", "GET", null, 
+				function(response){
+					updateNameList(response,self.data);
+				}, 
+				showApiError);            
         }
     };
 }
 
+function updateNameList(response,model){
+	if(response.success){
+		//alert(response.data);
+		model(response.data);
+	}
+};
