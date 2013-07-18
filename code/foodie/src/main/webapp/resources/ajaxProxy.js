@@ -1,6 +1,6 @@
 function callApi(service, method, data, onSuccess, onError){
 	//var proxy = "simple-proxy.php?mode=native&url=";
-	var remotepath = "http://localhost:8080/api/" + service;
+	var remotepath = "/api/" + service;
 	//var url = proxy + remotepath;
 	var url = remotepath;
 	$.ajax({
