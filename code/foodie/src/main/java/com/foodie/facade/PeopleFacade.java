@@ -1,36 +1,26 @@
-package com.foodie.model;
+package com.foodie.facade;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
+import com.foodie.model.People;
 
-import com.google.appengine.api.datastore.Key;
 
-@PersistenceCapable
-public class People {
+
+public class PeopleFacade {
 	
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key key;
-	
-	@Persistent
 	private String forename;
-	
-	@Persistent
 	private String surname;
-	
 	private String fullname;
  
 	
-	public People(String forname, String surname){
+	public PeopleFacade(String forname, String surname){
 		this.setForename(forname);
 		this.setSurname(surname);		
 	}
 	
-	public Key getKey(){
-		return key;
+	public PeopleFacade(People person){
+		this.setForename(person.getForename());
+		this.setSurname(person.getSurname());		
 	}
+	
 	public String getForename() {
 		return this.forename;
 	}
