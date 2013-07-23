@@ -19,6 +19,6 @@ test-output
 *~
 /target
 CONTRIB.md
-nbactions.xml
 datanucleus.log
+README.md
 LICENSE
