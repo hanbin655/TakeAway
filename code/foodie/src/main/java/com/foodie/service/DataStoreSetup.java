@@ -7,8 +7,8 @@ import javax.jdo.PersistenceManager;
 
 import org.springframework.stereotype.Service;
 
-import com.foodie.model.PMF;
 import com.foodie.model.People;
+import com.foodie.repository.PMF;
 
 @Service
 public class DataStoreSetup {

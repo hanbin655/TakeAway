@@ -9,6 +9,9 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.foodie.repository.PeopleDAO;
+import com.foodie.repository.PeopleDAOImpl;
+
 @ComponentScan(basePackages = "com.foodie")
 @Configuration
 @EnableWebMvc
@@ -30,6 +33,7 @@ public class AppConfig {
         irvr.setViewClass(JstlView.class);
         return irvr;
     }
-
+    
+   
 
 }
