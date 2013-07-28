@@ -18,10 +18,10 @@ public class QueryResult<T> {
 	}
 		
 	public static QueryResult<?> CreateFromSuccess(Object result){
-        return new QueryResult(true, result);
+        return new QueryResult<Object>(true, result);
 	}
-	public static QueryResult<?> CreateFromFailure(){
-		return new QueryResult(false, null);
+	public static QueryResult<?> CreateFromFailure(String exceptionString){
+		return new QueryResult<Object>(false, exceptionString);
 	}
 	
 }

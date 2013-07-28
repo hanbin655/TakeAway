@@ -10,13 +10,21 @@ import com.foodie.repository.PeopleDAOImpl;
 
 
 @Service
-public class NameListService {
+public class NameListService extends AbstractService {
 	private PeopleDAO pdao = new PeopleDAOImpl();
+
 	
-	public List<People> getAllNames(){
+	public List<People> getAllNames() throws NullPointerException{
 		
 		List<People> result = pdao.getAllPeople();
+		if(result.isEmpty())
+		{
+			this.ThrowException(new NullPointerException("No result found"));
+		}
 		return result;
 	}
+
+
+	
 	
 }

@@ -1,7 +1,6 @@
 package com.foodie.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,26 +18,31 @@ public class ApiController {
 	@Autowired
 	NameListService nameService;
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/getNameList",method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<People> getNameList() {	
-		//DataStoreSetup.setup();
-		List<People> result = nameService.getAllNames();
-		if(result.isEmpty()){
-			return (QueryResult<People>) QueryResult.CreateFromFailure();
-		}else{
+		//DataStoreSetup.setup();		
+		try
+		{
+			List<People> result = nameService.getAllNames();
 			return (QueryResult<People>) QueryResult.CreateFromSuccess(result);
 		}
+		catch(Exception e)
+		{
+			return (QueryResult<People>) QueryResult.CreateFromFailure(e.getMessage());
+		}
+		
 	}
 	
 	@RequestMapping(value="/setMockNames",method = RequestMethod.GET)
 	@ResponseBody
-	public String setMockNames(){
-		try{
+	public Result setMockNames(){
+		try{			
 			DataStoreSetup.setup();
-			return "Success";
+			return Result.CreateFromSuccess(true);
 		}catch(Exception e){
-			return "Failure";
+			return Result.CreateFromFailure(e);
 		}
 		
 		

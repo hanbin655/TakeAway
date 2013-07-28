@@ -31,6 +31,7 @@ public class PeopleDAOImpl implements PeopleDAO{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<People> getAllPeople() {
 		List<People> querryResult = null;
