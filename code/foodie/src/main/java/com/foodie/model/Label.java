@@ -8,33 +8,37 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
-public class Menu {
-	
+public class Label {
+
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key menuId;
+	private Key labelId;
 	
 	@Persistent
-	private String menuName;
+	private String labelName;
 	
 	@Persistent
 	private String description;
-
-	public Menu(String menuName, String description){
-		this.menuName  = menuName;
+	
+	public Label(String labelName, String description){
+		this.labelName = labelName;
 		this.description = description;
 	}
 	
-	public String getMenuName() {
-		return menuName;
+	public String getLabelName(){
+		return labelName;
 	}
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
+	
+	public void setLabelName(String labelName){
+		this.labelName = labelName;
 	}
-	public String getDescription() {
+	
+	public String getDescription(){
 		return description;
 	}
-	public void setDescription(String description) {
+	
+	public void setDescription(String description){
 		this.description = description;
 	}
+	
 }
