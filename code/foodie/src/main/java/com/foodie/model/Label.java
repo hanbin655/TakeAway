@@ -13,13 +13,19 @@ public class Label {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key labelId;
-	
 	@Persistent
 	private String labelName;
-	
 	@Persistent
 	private String description;
 	
+	public Key getLabelId() {
+		return labelId;
+	}
+
+	public void setLabelId(Key labelId) {
+		this.labelId = labelId;
+	}
+
 	public Label(String labelName, String description){
 		this.labelName = labelName;
 		this.description = description;

@@ -7,6 +7,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+
 @PersistenceCapable
 public class Location {
 
@@ -27,6 +28,8 @@ public class Location {
 	private String address1;
 	@Persistent
 	private String address2;
+	@Persistent
+	private Key userId;
 	
 	public Location(String province, String city, String zipcode, 
 			String address1, String address2){
@@ -81,6 +84,15 @@ public class Location {
 	public void setAddress2(String address2){
 		this.address2 = address2;
 	}
+
+	public Key getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Key userId) {
+		this.userId = userId;
+	}
+
 
 
 }

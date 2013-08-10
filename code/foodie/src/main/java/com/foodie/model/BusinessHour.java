@@ -81,4 +81,20 @@ public class BusinessHour {
 		}
 		return false;
 	}
+
+	public Key getBusinessHourId() {
+		return businessHourId;
+	}
+
+	public void setBusinessHourId(Key businessHourId) {
+		this.businessHourId = businessHourId;
+	}
+
+	public void setFromTime(int fromTime) {
+		this.fromTime = fromTime;
+	}
+
+	public void setToTime(int toTime) {
+		this.toTime = toTime;
+	}
 }

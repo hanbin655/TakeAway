@@ -13,12 +13,21 @@ public class Menu {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key menuId;
-	
 	@Persistent
 	private String menuName;
-	
 	@Persistent
 	private String description;
+	@Persistent
+	private Key resaurantId;
+	
+	public Key getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(Key menuId) {
+		this.menuId = menuId;
+	}
+	
 
 	public Menu(String menuName, String description){
 		this.menuName  = menuName;

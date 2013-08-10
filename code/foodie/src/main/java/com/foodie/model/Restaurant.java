@@ -16,24 +16,73 @@ public class Restaurant {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key restaurantId;
-	
 	@Persistent
 	private String name;
-	
 	@Persistent
 	private String description;
-	
 	@Persistent
 	private BusinessHour businessHour;
-
-	
 	@Persistent
 	private float deliveryDistance;
-	
 	@Persistent
 	private Key currentMenuId;
-	
 	@Persistent
 	private List<Menu> menues;
+
+	public Key getRestaurantId() {
+		return restaurantId;
+	}
+
+	public void setRestaurantId(Key restaurantId) {
+		this.restaurantId = restaurantId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public BusinessHour getBusinessHour() {
+		return businessHour;
+	}
+
+	public void setBusinessHour(BusinessHour businessHour) {
+		this.businessHour = businessHour;
+	}
+
+	public float getDeliveryDistance() {
+		return deliveryDistance;
+	}
+
+	public void setDeliveryDistance(float deliveryDistance) {
+		this.deliveryDistance = deliveryDistance;
+	}
+
+	public Key getCurrentMenuId() {
+		return currentMenuId;
+	}
+
+	public void setCurrentMenuId(Key currentMenuId) {
+		this.currentMenuId = currentMenuId;
+	}
+
+	public List<Menu> getMenues() {
+		return menues;
+	}
+
+	public void setMenues(List<Menu> menues) {
+		this.menues = menues;
+	}
 	
 }
