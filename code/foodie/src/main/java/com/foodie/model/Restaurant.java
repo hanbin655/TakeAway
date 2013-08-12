@@ -1,5 +1,6 @@
 package com.foodie.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -16,18 +17,24 @@ public class Restaurant {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key restaurantId;
+	
 	@Persistent
 	private String name;
+	
 	@Persistent
 	private String description;
+	
 	@Persistent
 	private BusinessHour businessHour;
+	
 	@Persistent
 	private float deliveryDistance;
+	
 	@Persistent
 	private Key currentMenuId;
-	@Persistent
-	private List<Menu> menues;
+	
+	@Persistent(mappedBy = "resaurantId")
+	private List<Menu> menues = new ArrayList<Menu>();
 
 	public Key getRestaurantId() {
 		return restaurantId;

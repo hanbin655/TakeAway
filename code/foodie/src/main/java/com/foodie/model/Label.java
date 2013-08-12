@@ -13,11 +13,14 @@ public class Label {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key labelId;
+	
 	@Persistent
 	private String labelName;
+	
 	@Persistent
 	private String description;
 	
+	//TODO: Not sure if we will use setter and getter here
 	public Key getLabelId() {
 		return labelId;
 	}

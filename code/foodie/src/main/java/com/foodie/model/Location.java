@@ -24,12 +24,15 @@ public class Location {
 	
 	@Persistent
 	private String zipcode;
+	
 	@Persistent
 	private String address1;
+	
 	@Persistent
 	private String address2;
+	
 	@Persistent
-	private Key userId;
+	private Key ownerId;
 	
 	public Location(String province, String city, String zipcode, 
 			String address1, String address2){
@@ -85,12 +88,12 @@ public class Location {
 		this.address2 = address2;
 	}
 
-	public Key getUserId() {
-		return userId;
+	public Key getOwnerId() {
+		return ownerId;
 	}
 
-	public void setUserId(Key userId) {
-		this.userId = userId;
+	public void setOwnerId(Key ownerId) {
+		this.ownerId = ownerId;
 	}
 
 

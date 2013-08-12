@@ -1,5 +1,8 @@
 package com.foodie.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -13,12 +16,18 @@ public class Menu {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key menuId;
+	
 	@Persistent
 	private String menuName;
+	
 	@Persistent
 	private String description;
+	
 	@Persistent
 	private Key resaurantId;
+	
+	@Persistent
+	private List<MenuItem> menuItems = new ArrayList<MenuItem>();
 	
 	public Key getMenuId() {
 		return menuId;
@@ -37,13 +46,25 @@ public class Menu {
 	public String getMenuName() {
 		return menuName;
 	}
+	
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public void addMenuItem(MenuItem menuItem){
+		this.menuItems.add(menuItem);
+	}
+	
+	public List<MenuItem> getMenuItems(){
+		return menuItems;
+	}
+
 }

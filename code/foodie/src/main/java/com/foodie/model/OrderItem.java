@@ -12,10 +12,10 @@ public class OrderItem {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key orderItemId;
+	
 	@Persistent
 	private BigDecimal itemPrice;
-	@Persistent
-	private Key orderId;
+
 	public Key getOrderItemId() {
 		return orderItemId;
 	}
@@ -28,11 +28,12 @@ public class OrderItem {
 	public void setItemPrice(BigDecimal itemPrice) {
 		this.itemPrice = itemPrice;
 	}
+	/*
 	public Key getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(Key orderId) {
 		this.orderId = orderId;
-	}
+	}*/
 
 }

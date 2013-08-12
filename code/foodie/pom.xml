@@ -226,6 +226,8 @@
                 <configuration>
                    <!--  <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>--> 
                     <verbose>true</verbose>
+                    <mappingIncludes>com/foodie/model/*.class</mappingIncludes>
+                    <fork>false</fork>
                 </configuration>
                 <executions>
                     <execution>

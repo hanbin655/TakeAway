@@ -1,6 +1,6 @@
 package com.foodie.model;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -35,8 +35,8 @@ public class User {
 	@Persistent
 	private byte[] logo;
 	
-	@Persistent
-	private List<Location> deliveryAddresses = new LinkedList<Location>();
+	@Persistent(mappedBy = "ownerId")
+	private List<Location> deliveryAddresses = new ArrayList<Location>();
 	
 
 	public User(String userName, String password, String email, 

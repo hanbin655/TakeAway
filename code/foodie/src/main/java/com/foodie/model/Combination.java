@@ -1,6 +1,7 @@
 package com.foodie.model;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Persistent;
@@ -11,15 +12,17 @@ import com.google.appengine.api.datastore.Key;
 public class Combination {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key idombinationId;
+	private Key combinationId;
+	
 	@Persistent
 	private BigDecimal price;
-	public Key getIdombinationId() {
-		return idombinationId;
-	}
-	public void setIdombinationId(Key idombinationId) {
-		this.idombinationId = idombinationId;
-	}
+	
+	@Persistent
+	private String description;
+
+	@Persistent
+	private Set<MenuItem> itemCombination;
+	
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -32,7 +35,5 @@ public class Combination {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@Persistent
-	private String description;
-
+	
 }

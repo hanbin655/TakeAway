@@ -1,12 +1,14 @@
 package com.foodie.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.datanucleus.annotations.Unowned;
 
 @PersistenceCapable
 public class Order {
@@ -18,18 +20,29 @@ public class Order {
 	
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key orderId;
+
 	@Persistent
 	private Key userId;
+	
 	@Persistent
-	private Key locationId;
+	@Unowned
+	private Location location;
+	
 	@Persistent
 	private Key restaurantId;
+	
 	@Persistent
 	private Date dateTime;
+	
 	@Persistent
 	private String personName;
+	
+	@Persistent
+	private List<OrderItem> orderItems; 
+	
 	@Persistent
 	private int state;
+	
 	public Key getOrderId() {
 		return orderId;
 	}
@@ -42,11 +55,11 @@ public class Order {
 	public void setUserId(Key userId) {
 		this.userId = userId;
 	}
-	public Key getLocationId() {
-		return locationId;
+	public Location getLocation() {
+		return location;
 	}
-	public void setLocationId(Key locationId) {
-		this.locationId = locationId;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 	public Key getRestaurantId() {
 		return restaurantId;
