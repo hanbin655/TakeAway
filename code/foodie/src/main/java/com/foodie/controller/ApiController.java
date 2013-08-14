@@ -1,6 +1,7 @@
 package com.foodie.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.foodie.model.People;
+import com.foodie.repository.MenuDAO;
+import com.foodie.repository.MenuDAOImpl;
 import com.foodie.service.DataStoreSetup;
 import com.foodie.service.NameListService;
 
@@ -35,6 +38,23 @@ public class ApiController {
 		
 	}
 	
+	//TODO: to be finished
+	@RequestMapping(value="/getMenuList",method = RequestMethod.GET)
+	@ResponseBody
+    public QueryResult<People> getMenuList() {	
+		//DataStoreSetup.setup();		
+		try
+		{
+			MenuDAO menuDAO = new MenuDAOImpl();
+			List<People> result = menuDAO.get;
+			return (QueryResult<People>) QueryResult.CreateFromSuccess(result);
+		}
+		catch(Exception e)
+		{
+			return (QueryResult<People>) QueryResult.CreateFromFailure(e.getMessage());
+		}
+		
+	}
 	@RequestMapping(value="/setMockNames",method = RequestMethod.GET)
 	@ResponseBody
 	public Result setMockNames(){
@@ -47,5 +67,4 @@ public class ApiController {
 		
 		
 	}
-	
 }

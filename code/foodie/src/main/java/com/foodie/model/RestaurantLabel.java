@@ -1,5 +1,8 @@
 package com.foodie.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -14,20 +17,15 @@ public class RestaurantLabel {
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key restaurantLabelId;
 	@Persistent
-	private Key restaurantId;
+	private Set<Key> restaurantIds = new HashSet<Key>();
 	@Persistent
 	private Key labelId;
+	
 	public Key getRestaurantLabelId() {
 		return restaurantLabelId;
 	}
 	public void setRestaurantLabelId(Key restaurantLabelId) {
 		this.restaurantLabelId = restaurantLabelId;
-	}
-	public Key getRestaurantId() {
-		return restaurantId;
-	}
-	public void setRestaurantId(Key restaurantId) {
-		this.restaurantId = restaurantId;
 	}
 	public Key getLabelId() {
 		return labelId;

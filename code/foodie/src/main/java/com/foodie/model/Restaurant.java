@@ -1,7 +1,9 @@
 package com.foodie.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -35,6 +37,9 @@ public class Restaurant {
 	
 	@Persistent(mappedBy = "resaurantId")
 	private List<Menu> menues = new ArrayList<Menu>();
+	
+	@Persistent
+	private Set<Key> labels = new HashSet<Key>();
 
 	public Key getRestaurantId() {
 		return restaurantId;

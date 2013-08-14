@@ -3,11 +3,13 @@ package com.foodie.model;
 import java.math.BigDecimal;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+@PersistenceCapable
 public class MenuItem {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -24,6 +26,11 @@ public class MenuItem {
 	private BigDecimal itemPrice;
 	@Persistent
 	private String imageUrl;
+	
+	public MenuItem(String itemName, BigDecimal price){
+		this.itemName = itemName;
+		itemPrice = price;
+	}
 	
 	public Key getMenuItemId() {
 		return menuItemId;
