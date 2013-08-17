@@ -11,6 +11,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class Restaurant {
@@ -41,8 +42,8 @@ public class Restaurant {
 	@Persistent
 	private Set<Key> labels = new HashSet<Key>();
 
-	public Key getRestaurantId() {
-		return restaurantId;
+	public String getRestaurantId() {
+		return KeyFactory.keyToString(restaurantId);
 	}
 
 	public void setRestaurantId(Key restaurantId) {

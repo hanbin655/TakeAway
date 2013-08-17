@@ -6,6 +6,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class Label {
@@ -21,8 +22,8 @@ public class Label {
 	private String description;
 	
 	//TODO: Not sure if we will use setter and getter here
-	public Key getLabelId() {
-		return labelId;
+	public String getLabelId() {
+		return KeyFactory.keyToString(labelId);
 	}
 
 	public void setLabelId(Key labelId) {

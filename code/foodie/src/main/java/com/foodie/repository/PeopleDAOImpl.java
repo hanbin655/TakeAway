@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.foodie.model.People;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @Repository
 public class PeopleDAOImpl implements PeopleDAO{
@@ -46,11 +47,11 @@ public class PeopleDAOImpl implements PeopleDAO{
 	}
 
 	@Override
-	public People getByKey(Key key) {
+	public People getByKey(String key) {
 		People p = null;
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try{
-			p = (People) pm.getObjectById(People.class, key);
+			p = (People) pm.getObjectById(People.class, KeyFactory.stringToKey(key));
 		}finally{
 			pm.close();
 		}

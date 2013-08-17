@@ -11,5 +11,6 @@ public interface MenuDAO {
 	public void addMenuItem(Key id, MenuItem menuItem);
 	public Menu getMenuById(Key menuId);
 	public List<MenuItem> getAllMenuItems(Key id);
-	//public List<Menu> getAllMenu();
+	public List<Menu> getAllMenu();
+	public MenuItem getMenuItemById(Key menuItemId);
 }

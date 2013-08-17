@@ -9,6 +9,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class User {
@@ -48,8 +49,8 @@ public class User {
 		this.name = name;
 	}
 	
-	public Key getUserId(){
-		return userId;
+	public String getUserId(){
+		return KeyFactory.keyToString(userId);
 	}
 	
 	public String getUserName(){

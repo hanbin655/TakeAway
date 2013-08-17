@@ -9,6 +9,6 @@ public interface PeopleDAO {
 	
 	public void add(People p);
 	public List<People> getAllPeople();
-	public People getByKey(Key key);
+	public People getByKey(String key);
 
 }

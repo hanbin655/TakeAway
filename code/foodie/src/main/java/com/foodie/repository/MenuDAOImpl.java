@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 
+import org.datanucleus.FetchGroup;
 import org.springframework.stereotype.Repository;
 
 import com.foodie.model.Menu;
@@ -15,12 +16,13 @@ import com.google.appengine.api.datastore.Key;
 public class MenuDAOImpl implements MenuDAO {
 
 	private PersistenceManagerFactory pmf;
-	
+	private String cst_getAllQuery = 
+			"select from " + Menu.class.getName();
 	public MenuDAOImpl(){
 		pmf = PMF.get();
 	}
 	
-	public Menu getMenuById(Key menuId) {
+	public Menu getMenuById(Key menuId){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Menu menu = null;
 		try{
@@ -31,12 +33,16 @@ public class MenuDAOImpl implements MenuDAO {
 		return menu;
 	}
 
-	public List<MenuItem> getAllMenuItems(Key id) {
+	//TODO: workaround
+	public List<MenuItem> getAllMenuItems(Key menuId) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		List<MenuItem> menuItems = null;
 		try{
-			Menu menu = pm.getObjectById(Menu.class, id);
+			Menu menu = pm.getObjectById(Menu.class	, menuId);
 			menuItems = menu.getMenuItems();
+			for(MenuItem m :menuItems){
+				m.getItemName();
+			}
 		}finally{
 			pm.close();
 		}
@@ -48,6 +54,7 @@ public class MenuDAOImpl implements MenuDAO {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try{
 			pm.makePersistent(menu);
+			
 		}finally{
 			pm.close();
 		}
@@ -64,17 +71,34 @@ public class MenuDAOImpl implements MenuDAO {
 		}
 	}
 
-	/*
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Menu> getAllMenu() {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		
 		List<Menu> menus = null;
 		try{
-			menus = pm.getO
+			menus = (List<Menu>) pm.newQuery(cst_getAllQuery).execute();
 		}finally{
 			pm.close();
 		}
-	}*/
+		return menus;
+	}
+
+	@Override
+	public MenuItem getMenuItemById(Key menuItemId) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		
+		MenuItem menuItem = null;
+		try{
+			menuItem = pm.getObjectById(MenuItem.class, menuItemId);
+		}finally{
+			pm.close();
+		}
+		return menuItem;
+	}
+	
+	
 
 }

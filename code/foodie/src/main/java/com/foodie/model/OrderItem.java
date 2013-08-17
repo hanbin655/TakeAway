@@ -7,6 +7,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 public class OrderItem {
 	@PrimaryKey
@@ -16,8 +17,8 @@ public class OrderItem {
 	@Persistent
 	private BigDecimal itemPrice;
 
-	public Key getOrderItemId() {
-		return orderItemId;
+	public String getOrderItemId() {
+		return KeyFactory.keyToString(orderItemId);
 	}
 	public void setOrderItemId(Key orderItemId) {
 		this.orderItemId = orderItemId;

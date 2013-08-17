@@ -13,6 +13,7 @@ import com.foodie.model.Menu;
 import com.foodie.model.MenuItem;
 import com.foodie.model.People;
 import com.foodie.repository.PMF;
+import com.google.appengine.api.datastore.Key;
 
 @Service
 public class DataStoreSetup{
@@ -34,9 +35,13 @@ public class DataStoreSetup{
 			MenuItem menuitem2 = new MenuItem("item2", BigDecimal.valueOf(2,1));
 			menu.addMenuItem(menuitem1);
 			menu.addMenuItem(menuitem2);
+			
 			pm.makePersistent(menu);
-		}
-		finally{
+			
+			
+		}catch(Exception e){
+			System.out.println(e);
+		}finally{
 			pm.close();
 		}
 			

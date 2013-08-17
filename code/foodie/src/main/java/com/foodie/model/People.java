@@ -1,5 +1,6 @@
 package com.foodie.model;
 
+import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
@@ -7,12 +8,14 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class People {
 	
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	//@Extension(vendorName="datanucleus", key="encoded-pk", value="true")
 	private Key key;
 	
 	@Persistent
@@ -30,8 +33,9 @@ public class People {
 		this.setSurname(surname);		
 	}
 	
-	public Key getKey(){
-		return key;
+	public String getKey(){
+		//return key;
+		return KeyFactory.keyToString(key);
 	}
 	public String getForename() {
 		return this.forename;

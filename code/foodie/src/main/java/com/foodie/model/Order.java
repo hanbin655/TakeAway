@@ -8,6 +8,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.datanucleus.annotations.Unowned;
 
 @PersistenceCapable
@@ -43,8 +44,8 @@ public class Order {
 	@Persistent
 	private int state;
 	
-	public Key getOrderId() {
-		return orderId;
+	public String getOrderId() {
+		return KeyFactory.keyToString(orderId);
 	}
 	public void setOrderId(Key orderId) {
 		this.orderId = orderId;

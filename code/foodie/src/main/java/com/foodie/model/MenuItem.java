@@ -8,6 +8,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class MenuItem {
@@ -32,8 +33,8 @@ public class MenuItem {
 		itemPrice = price;
 	}
 	
-	public Key getMenuItemId() {
-		return menuItemId;
+	public String getMenuItemId() {
+		return KeyFactory.keyToString(menuItemId);
 	}
 	public void setMenuItemId(Key menuItemId) {
 		this.menuItemId = menuItemId;

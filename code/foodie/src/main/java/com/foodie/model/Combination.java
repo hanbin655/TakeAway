@@ -8,6 +8,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 public class Combination {
 	@PrimaryKey
@@ -22,6 +23,10 @@ public class Combination {
 
 	@Persistent
 	private Set<MenuItem> itemCombination;
+	
+	public String getCombinationId(){
+		return KeyFactory.keyToString(combinationId);
+	}
 	
 	public BigDecimal getPrice() {
 		return price;

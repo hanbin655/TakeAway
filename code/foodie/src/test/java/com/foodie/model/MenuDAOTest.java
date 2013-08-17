@@ -21,16 +21,18 @@ public class MenuDAOTest {
 	private final LocalServiceTestHelper helper =  
 		        new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());  
 
+	private final BigDecimal testValue1 = new BigDecimal(1.1);
+	private final BigDecimal testValue2 = new BigDecimal(2.0);
 	private MenuDAO menuDAO = new MenuDAOImpl();
     
 	@Before  
     public void setUp() {  
-        helper.setUp();          
+        helper.setUp();
     }  
   
     @After  
     public void tearDown() {  
-  //      helper.tearDown();  
+    	helper.tearDown();  
     } 
 	@Test
 	public void createNewMenuTest(){
@@ -47,18 +49,20 @@ public class MenuDAOTest {
 	@Test
 	public void addMenuItemTest(){
 		Menu menu = new Menu("Menu2","TestMenu2");
-		MenuItem menuitem1 = new MenuItem("item1", BigDecimal.valueOf(1.1));
-		MenuItem menuitem2 = new MenuItem("item2", BigDecimal.valueOf(2,1));
+		MenuItem menuitem1 = new MenuItem("item1", testValue1);
+		MenuItem menuitem2 = new MenuItem("item2", testValue2);
 		menu.addMenuItem(menuitem1);
 		menu.addMenuItem(menuitem2);
 		menuDAO.add(menu);
-		Key menuId = menu.getMenuId();
-		
+		//Key menuId = menu.getMenuId();
+		List<Menu> result1 = menuDAO.getAllMenu();
+		Key menuId = result1.get(0).getMenuId();
 		List<MenuItem> menuItems = menuDAO.getAllMenuItems(menuId);
 		assertNotNull(menuItems);
 		assertEquals(menuItems.size(),2);
-		System.out.println(menuItems.get(0).getItemPrice());
-//		assertEquals(menuitem1.getItemName(),menuItems.get(0).getItemName());
-	//	assertEquals(menuitem2.getItemName(),menuItems.get(1).getItemName());
+		assertEquals(menuitem1.getItemName(),menuItems.get(0).getItemName());
+		assertEquals(menuitem2.getItemName(),menuItems.get(1).getItemName());
+		assertEquals(menuitem1.getItemPrice(),menuItems.get(0).getItemPrice());
+		assertEquals(menuitem2.getItemPrice(),menuItems.get(1).getItemPrice());
 	}
 }

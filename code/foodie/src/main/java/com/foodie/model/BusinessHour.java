@@ -8,6 +8,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @PersistenceCapable
 public class BusinessHour {
@@ -82,8 +83,8 @@ public class BusinessHour {
 		return false;
 	}
 
-	public Key getBusinessHourId() {
-		return businessHourId;
+	public String getBusinessHourId() {
+		return KeyFactory.keyToString(businessHourId);
 	}
 
 	public void setBusinessHourId(Key businessHourId) {

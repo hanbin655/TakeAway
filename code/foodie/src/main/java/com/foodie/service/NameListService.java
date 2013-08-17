@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.foodie.config.ApplicationHelper;
 import com.foodie.model.People;
 import com.foodie.repository.PeopleDAO;
 import com.foodie.repository.PeopleDAOImpl;
@@ -19,7 +20,8 @@ public class NameListService extends AbstractService {
 		List<People> result = pdao.getAllPeople();
 		if(result.isEmpty())
 		{
-			this.ThrowException(new NullPointerException("No result found"));
+			this.ThrowException(new NullPointerException(
+					ApplicationHelper.NullPointerExceptionMssg));
 		}
 		return result;
 	}

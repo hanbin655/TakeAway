@@ -6,6 +6,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 
 @PersistenceCapable
@@ -44,8 +45,8 @@ public class Location {
 		
 	}
 	
-	public Key getLocationId(){
-		return locationId;
+	public String getLocationId(){
+		return KeyFactory.keyToString(locationId);
 	}
 	
 	public String getProvince(){
