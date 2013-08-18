@@ -1,52 +1,58 @@
 package com.foodie.service;
 
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.jdo.PersistenceManager;
-
 import org.springframework.stereotype.Service;
 
+import com.foodie.model.Location;
 import com.foodie.model.Menu;
 import com.foodie.model.MenuItem;
 import com.foodie.model.People;
-import com.foodie.repository.PMF;
+import com.foodie.model.Restaurant;
+import com.foodie.repository.MenuDAO;
+import com.foodie.repository.MenuDAOImpl;
+import com.foodie.repository.PeopleDAO;
+import com.foodie.repository.PeopleDAOImpl;
+import com.foodie.repository.RestaurantDAO;
+import com.foodie.repository.RestaurantDAOImpl;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 
 @Service
 public class DataStoreSetup{
 
+	
 	public static void  setup(){
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try{
-			
-			List<People> result = new ArrayList<People>();
-			result.add(new People("Bin","Han"));
-			result.add(new People("Yan","Li"));
-			result.add(new People("Jun","Ze"));
-			result.add(new People("Test1","Test2"));
-
-			pm.makePersistentAll(result);
-			
-			Menu menu = new Menu("Menu2","TestMenu2");
-			MenuItem menuitem1 = new MenuItem("item1", BigDecimal.valueOf(1.1));
-			MenuItem menuitem2 = new MenuItem("item2", BigDecimal.valueOf(2,1));
-			menu.addMenuItem(menuitem1);
-			menu.addMenuItem(menuitem2);
-			
-			pm.makePersistent(menu);
-			
-			
-		}catch(Exception e){
-			System.out.println(e);
-		}finally{
-			pm.close();
-		}
-			
+		
+		RestaurantDAO restaurantDAO = new RestaurantDAOImpl();
+		
+		PeopleDAO peopleDAO = new PeopleDAOImpl();
+		
+		peopleDAO.add(new People("Bin","Han"));
+		peopleDAO.add(new People("Yan","Li"));
+		peopleDAO.add(new People("Jun","Ze"));
+		peopleDAO.add(new People("Test1","Test2"));
 
 		
+		Location location = new Location(TestHelper.cst_Prvnc1,
+    			TestHelper.cst_Ct1,TestHelper.cst_Zpcd1,
+    			TestHelper.cst_Addrss1_1,TestHelper.cst_Addrss2_1);
+    	Restaurant r = new Restaurant(TestHelper.cst_Name1,
+    			TestHelper.cst_Dscrpt1,location);
+    	restaurantDAO.add(r);
+    	
+    	Key key = KeyFactory.stringToKey(r.getRestaurantId());
+    	
+    	Menu menu = new Menu(TestHelper.cst_MenuName1,
+    			TestHelper.cst_MenuDscrpt1);
+    	
+    	
+    	for(int i = 0; i<2; i++){
+    		menu.addMenuItem(new MenuItem(TestHelper.cst_MnItmNm[i],
+    				TestHelper.cst_MnItmPrc[i]));
+    	}
+    	
+    	restaurantDAO.addMenu(key, menu);
+    	
 	}	
 		
 }

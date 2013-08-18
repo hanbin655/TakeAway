@@ -24,8 +24,9 @@ public class Menu {
 	@Persistent
 	private String description;
 	
-	@Persistent
-	private Key resaurantId;
+	
+	//@Persistent
+	//private Key resaurantId;
 	
 	@Persistent(defaultFetchGroup = "true")
 	private List<MenuItem> menuItems = new ArrayList<MenuItem>();

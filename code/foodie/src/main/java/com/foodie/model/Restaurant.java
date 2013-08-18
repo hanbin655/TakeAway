@@ -34,14 +34,23 @@ public class Restaurant {
 	private float deliveryDistance;
 	
 	@Persistent
-	private Key currentMenuId;
+	private Key currentMenuId = null;
 	
-	@Persistent(mappedBy = "resaurantId")
+	@Persistent
 	private List<Menu> menues = new ArrayList<Menu>();
 	
 	@Persistent
 	private Set<Key> labels = new HashSet<Key>();
 
+	@Persistent
+	private Location location;
+	
+	public Restaurant(String name,String description,Location location){
+		this.name = name;
+		this.description = description;
+		this.location = location;
+	}
+	
 	public String getRestaurantId() {
 		return KeyFactory.keyToString(restaurantId);
 	}
@@ -66,6 +75,7 @@ public class Restaurant {
 		this.description = description;
 	}
 
+	
 	public BusinessHour getBusinessHour() {
 		return businessHour;
 	}
@@ -73,7 +83,7 @@ public class Restaurant {
 	public void setBusinessHour(BusinessHour businessHour) {
 		this.businessHour = businessHour;
 	}
-
+	
 	public float getDeliveryDistance() {
 		return deliveryDistance;
 	}
@@ -81,21 +91,31 @@ public class Restaurant {
 	public void setDeliveryDistance(float deliveryDistance) {
 		this.deliveryDistance = deliveryDistance;
 	}
-
-	public Key getCurrentMenuId() {
-		return currentMenuId;
+	
+	public String getCurrentMenuId() {
+		if(currentMenuId == null){
+			return null;
+		}
+		return KeyFactory.keyToString(currentMenuId);
 	}
 
 	public void setCurrentMenuId(Key currentMenuId) {
 		this.currentMenuId = currentMenuId;
 	}
-
+	
 	public List<Menu> getMenues() {
 		return menues;
 	}
 
-	public void setMenues(List<Menu> menues) {
-		this.menues = menues;
+	public void addtMenu(Menu menu) {
+		this.menues.add(menu);
 	}
 	
+	public void setLocation(Location location){
+		this.location = location;
+	}
+	
+	public Location getLocation(){
+		return location;
+	}
 }

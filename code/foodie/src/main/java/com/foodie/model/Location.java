@@ -32,8 +32,8 @@ public class Location {
 	@Persistent
 	private String address2;
 	
-	@Persistent
-	private Key ownerId;
+	//@Persistent
+	//private Key ownerId;
 	
 	public Location(String province, String city, String zipcode, 
 			String address1, String address2){
@@ -45,10 +45,11 @@ public class Location {
 		
 	}
 	
+	/* No need to show this to the client
 	public String getLocationId(){
 		return KeyFactory.keyToString(locationId);
 	}
-	
+	*/
 	public String getProvince(){
 		return province;
 	}
@@ -89,13 +90,14 @@ public class Location {
 		this.address2 = address2;
 	}
 
+	/*
 	public Key getOwnerId() {
 		return ownerId;
 	}
-
+	
 	public void setOwnerId(Key ownerId) {
 		this.ownerId = ownerId;
-	}
+	}*/
 
 
 
