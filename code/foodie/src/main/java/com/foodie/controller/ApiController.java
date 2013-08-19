@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.foodie.model.Menu;
 import com.foodie.model.MenuItem;
 import com.foodie.model.People;
-import com.foodie.model.Restaurant;
+import com.foodie.repository.MenuDAO;
+import com.foodie.repository.MenuDAOImpl;
 import com.foodie.service.DataStoreSetup;
 import com.foodie.service.NameListService;
 import com.foodie.service.PublicAccessService;
+import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
 @Controller
@@ -32,6 +35,7 @@ public class ApiController {
 	@RequestMapping(value="/getNameList",method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<People> getNameList() {	
+		//DataStoreSetup.setup();		
 		try
 		{
 			List<People> result = nameService.getAllNames();
@@ -45,51 +49,19 @@ public class ApiController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/getRestaurantById",method = RequestMethod.GET)
+	@RequestMapping(value="/getMenuList",method = RequestMethod.GET)
 	@ResponseBody
-    public QueryResult<Restaurant> getRestaurantById(@RequestParam("restaurantId") String restaurantId) {	
+    public QueryResult<Menu> getMenuList() {	
+		//DataStoreSetup.setup();		
 		try
 		{
-			Restaurant result = publicAccessService.getRestaurantById(
-					KeyFactory.stringToKey(restaurantId));
-			return (QueryResult<Restaurant>) QueryResult.CreateFromSuccess(result);
-		}
-		catch(Exception e)
-		{
-			return (QueryResult<Restaurant>) QueryResult.CreateFromFailure(e.getMessage());
-		}
-		
-	}
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/getMenu",method = RequestMethod.GET)
-	@ResponseBody
-    public QueryResult<Menu> getMenu(@RequestParam("restaurantId") String restaurantId) {	
-		try
-		{
-			List<Menu> result = publicAccessService.getMenu(
-					KeyFactory.stringToKey(restaurantId));
+			MenuDAO menuDAO = new MenuDAOImpl();
+			List<Menu> result = menuDAO.getAllMenu();
 			return (QueryResult<Menu>) QueryResult.CreateFromSuccess(result);
 		}
 		catch(Exception e)
 		{
 			return (QueryResult<Menu>) QueryResult.CreateFromFailure(e.getMessage());
-		}
-		
-	}
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/getMenuItem",method = RequestMethod.GET)
-	@ResponseBody
-    public QueryResult<MenuItem> getMenuItem(@RequestParam("menuId") String menuId) {	
-		try
-		{
-			List<MenuItem> result = publicAccessService.getMenuItem(
-					KeyFactory.stringToKey(menuId));
-			return (QueryResult<MenuItem>) QueryResult.CreateFromSuccess(result);
-		}
-		catch(Exception e)
-		{
-			return (QueryResult<MenuItem>) QueryResult.CreateFromFailure(e.getMessage());
 		}
 		
 	}
@@ -106,22 +78,6 @@ public class ApiController {
 		catch(Exception e)
 		{
 			return (QueryResult<Menu>) QueryResult.CreateFromFailure(e.getMessage());
-		}
-		
-	}
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/getMenuItemById",method = RequestMethod.GET)
-	@ResponseBody
-    public QueryResult<MenuItem> getMenuItemById(@RequestParam("menuItemId") String menuItemId) {	
-		try
-		{
-			MenuItem result =  publicAccessService.getMenuItemById(KeyFactory.stringToKey(menuItemId));
-			return (QueryResult<MenuItem>) QueryResult.CreateFromSuccess(result);
-		}
-		catch(Exception e)
-		{
-			return (QueryResult<MenuItem>) QueryResult.CreateFromFailure(e.getMessage());
 		}
 		
 	}
