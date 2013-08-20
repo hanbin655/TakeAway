@@ -11,6 +11,7 @@ import com.foodie.model.Menu;
 import com.foodie.model.MenuItem;
 import com.foodie.model.Restaurant;
 import com.foodie.repository.MenuDAO;
+import com.foodie.repository.RestaurantDAO;
 import com.google.appengine.api.datastore.Key;
 
 @Service
@@ -18,6 +19,11 @@ public class PublicAccessService extends AbstractService{
 
 	@Autowired
 	private MenuDAO menuDAO;
+	
+	@Autowired
+	private RestaurantDAO restaurantDAO;
+	
+	//TODO: to be finished
 	public List<Restaurant> getRestaurant(Location location, int bufferSize) 
 			throws NullPointerException{
 		return null;
@@ -25,11 +31,21 @@ public class PublicAccessService extends AbstractService{
 	
 	public Restaurant getRestaurantById(Key restaurantId)
 		throws NullPointerException{
-		return null;
+		Restaurant r = restaurantDAO.getRestaurantById(restaurantId);
+		if(r == null){
+			this.ThrowException(new NullPointerException(
+					ApplicationHelper.NullPointerExceptionMssg));
+		}
+		return r;
 	}
 	
 	public List<Menu> getMenu(Key restaurantId) throws NullPointerException{
-		return null;
+		List<Menu> menus= restaurantDAO.getMenu(restaurantId);
+		if(menus.isEmpty()){
+			this.ThrowException(new NullPointerException(
+					ApplicationHelper.NullPointerExceptionMssg));
+		}
+		return menus;
 	}
 	
 	
@@ -51,13 +67,13 @@ public class PublicAccessService extends AbstractService{
 		return menuItems;
 	}
 	
-	public MenuItem getMenuItemById(Key menuItemId){
+	public MenuItem getMenuItemById(Key menuItemId) throws NullPointerException{
 		MenuItem menuItem = menuDAO.getMenuItemById(menuItemId);
 		if(menuItem == null){
 			this.ThrowException(new NullPointerException(
 					ApplicationHelper.NullPointerExceptionMssg));
 		}
 		
-		return null;
+		return menuItem;
 	}
 }

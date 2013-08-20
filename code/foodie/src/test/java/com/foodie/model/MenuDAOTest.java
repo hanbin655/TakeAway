@@ -2,7 +2,6 @@ package com.foodie.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,15 +13,16 @@ import org.junit.Test;
 import com.foodie.repository.MenuDAO;
 import com.foodie.repository.MenuDAOImpl;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-
 public class MenuDAOTest {
 	private final LocalServiceTestHelper helper =  
 		        new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());  
 
 	private final BigDecimal testValue1 = new BigDecimal(1.1);
 	private final BigDecimal testValue2 = new BigDecimal(2.0);
+	
 	private MenuDAO menuDAO = new MenuDAOImpl();
     
 	@Before  
@@ -34,11 +34,12 @@ public class MenuDAOTest {
     public void tearDown() {  
     	helper.tearDown();  
     } 
+    
 	@Test
 	public void createNewMenuTest(){
 		Menu menu = new Menu("Menu1","TestMenu");
 		menuDAO.add(menu);
-		Key menuId = menu.getMenuId();
+		Key menuId = KeyFactory.stringToKey(menu.getMenuId());
 		Menu menuTest = menuDAO.getMenuById(menuId);
 		assertEquals(menu.getDescription(), menuTest.getDescription());
 		assertEquals(menu.getMenuName(),menuTest.getMenuName());
@@ -56,7 +57,7 @@ public class MenuDAOTest {
 		menuDAO.add(menu);
 		//Key menuId = menu.getMenuId();
 		List<Menu> result1 = menuDAO.getAllMenu();
-		Key menuId = result1.get(0).getMenuId();
+		Key menuId = KeyFactory.stringToKey(result1.get(0).getMenuId());
 		List<MenuItem> menuItems = menuDAO.getAllMenuItems(menuId);
 		assertNotNull(menuItems);
 		assertEquals(menuItems.size(),2);
