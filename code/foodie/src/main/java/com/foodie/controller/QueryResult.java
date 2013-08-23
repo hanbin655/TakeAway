@@ -3,6 +3,7 @@ package com.foodie.controller;
 public class QueryResult<T> {	
 	public boolean success;
     public T data;
+    public String message;
 
 	private void setSuccess(boolean value){
 		this.success = value;
@@ -11,6 +12,11 @@ public class QueryResult<T> {
     private void setData(T data){
         this.data = data;
     }
+    
+    public void setMessage(String message){
+    	this.message = message;
+    }
+    
 	
 	public QueryResult(boolean success, T data){
 		setSuccess(success);
