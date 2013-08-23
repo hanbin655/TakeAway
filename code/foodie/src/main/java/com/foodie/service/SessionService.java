@@ -51,7 +51,7 @@ public class SessionService extends AbstractService {
 		Boolean cookieSupport = false;
 		Cookie[] cookies = req.getCookies();
 		
-		try{
+		if(cookies != null){
 			for(Cookie c :cookies){
 				if(c.getName().equals(ApplicationHelper.cst_testCookieName)
 						&& c.getValue().equals(ApplicationHelper.cst_testCookieValue)){
@@ -59,10 +59,8 @@ public class SessionService extends AbstractService {
 					break;
 				}
 			}
-			
-		}catch(Exception e){
-			cookieSupport = false;
 		}
+			
 		return cookieSupport;
 		
 	}

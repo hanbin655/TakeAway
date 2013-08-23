@@ -36,7 +36,7 @@ public class User {
 	@Persistent
 	private byte[] logo;
 	
-	@Persistent(mappedBy = "ownerId")
+	@Persistent
 	private List<Location> deliveryAddresses = new ArrayList<Location>();
 	
 
