@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.annotations.Transactional;
 
 import org.datanucleus.FetchGroup;
 import org.springframework.stereotype.Repository;

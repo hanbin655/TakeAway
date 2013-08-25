@@ -21,7 +21,7 @@ public class NameListService extends AbstractService {
 		if(result.isEmpty())
 		{
 			this.ThrowException(new NullPointerException(
-					ApplicationHelper.NullPointerExceptionMssg));
+					ApplicationHelper.NULL_POINTER_EXCEPTION_MSG));
 		}
 		return result;
 	}

@@ -27,7 +27,7 @@ import com.foodie.service.SessionService;
 import com.google.appengine.api.datastore.KeyFactory;
 
 @Controller
-@RequestMapping(value=ApplicationHelper.cst_API_path, 
+@RequestMapping(value=ApplicationHelper.CST_API_PATH, 
 	produces = "application/json")
 public class ApiController {
 	
@@ -41,14 +41,14 @@ public class ApiController {
 	SessionService sessionService;
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value=ApplicationHelper.cst_API_getNameList,
+	@RequestMapping(value=ApplicationHelper.CST_API_GET_NAME_LIST,
 		method = RequestMethod.GET)
 	@ResponseBody
-    public QueryResult<People> getNameList() {	
+    public QueryResult<People> getNameList() {
 		try
 		{
 			List<People> result = nameService.getAllNames();
-			return (QueryResult<People>) QueryResult.CreateFromSuccess(result);
+			return (QueryResult<People>) QueryResult.createFromSuccess(result);
 		}
 		catch(Exception e)
 		{
@@ -58,7 +58,7 @@ public class ApiController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value=ApplicationHelper.cst_API_getRestaurantById,
+	@RequestMapping(value=ApplicationHelper.CST_API_GET_RESTAURANT_BY_ID,
 		method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<Restaurant> getRestaurantById(@RequestParam("restaurantId") String restaurantId) {	
@@ -66,7 +66,7 @@ public class ApiController {
 		{
 			Restaurant result = publicAccessService.getRestaurantById(
 					KeyFactory.stringToKey(restaurantId));
-			return (QueryResult<Restaurant>) QueryResult.CreateFromSuccess(result);
+			return (QueryResult<Restaurant>) QueryResult.createFromSuccess(result);
 		}
 		catch(Exception e)
 		{
@@ -75,7 +75,7 @@ public class ApiController {
 		
 	}
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value=ApplicationHelper.cst_API_getMenu,
+	@RequestMapping(value=ApplicationHelper.CST_API_GET_MENU,
 		method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<Menu> getMenu(@RequestParam("restaurantId") String restaurantId) {	
@@ -83,7 +83,7 @@ public class ApiController {
 		{
 			List<Menu> result = publicAccessService.getMenu(
 					KeyFactory.stringToKey(restaurantId));
-			return (QueryResult<Menu>) QueryResult.CreateFromSuccess(result);
+			return (QueryResult<Menu>) QueryResult.createFromSuccess(result);
 		}
 		catch(Exception e)
 		{
@@ -93,7 +93,7 @@ public class ApiController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value=ApplicationHelper.cst_API_getMenuItem,
+	@RequestMapping(value=ApplicationHelper.CST_API_GET_MENU_ITEM,
 		method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<MenuItem> getMenuItem(@RequestParam("menuId") String menuId) {	
@@ -101,7 +101,7 @@ public class ApiController {
 		{
 			List<MenuItem> result = publicAccessService.getMenuItem(
 					KeyFactory.stringToKey(menuId));
-			return (QueryResult<MenuItem>) QueryResult.CreateFromSuccess(result);
+			return (QueryResult<MenuItem>) QueryResult.createFromSuccess(result);
 		}
 		catch(Exception e)
 		{
@@ -111,14 +111,14 @@ public class ApiController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value=ApplicationHelper.cst_API_getMenuById,
+	@RequestMapping(value=ApplicationHelper.CST_API_GET_MENU_BY_ID,
 		method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<Menu> getMenuById(@RequestParam("menuId") String menuId) {	
 		try
 		{
 			Menu result =  publicAccessService.getMenuById(KeyFactory.stringToKey(menuId));
-			return (QueryResult<Menu>) QueryResult.CreateFromSuccess(result);
+			return (QueryResult<Menu>) QueryResult.createFromSuccess(result);
 		}
 		catch(Exception e)
 		{
@@ -128,14 +128,14 @@ public class ApiController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value=ApplicationHelper.cst_API_getMenuItemById,
+	@RequestMapping(value=ApplicationHelper.CST_API_GET_MENU_ITEM_BY_ID,
 		method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<MenuItem> getMenuItemById(@RequestParam("menuItemId") String menuItemId) {	
 		try
 		{
 			MenuItem result =  publicAccessService.getMenuItemById(KeyFactory.stringToKey(menuItemId));
-			return (QueryResult<MenuItem>) QueryResult.CreateFromSuccess(result);
+			return (QueryResult<MenuItem>) QueryResult.createFromSuccess(result);
 		}
 		catch(Exception e)
 		{
@@ -144,19 +144,19 @@ public class ApiController {
 		
 	}
 	
-	@RequestMapping(value=ApplicationHelper.cst_API_openSession,
+	@RequestMapping(value=ApplicationHelper.CST_API_OPEN_SESSION,
 		method = RequestMethod.GET)
 	@ResponseBody
     public void openSession(HttpServletResponse resp) throws IOException {	
-		Cookie testCookie = new Cookie(ApplicationHelper.cst_testCookieName, 
-				ApplicationHelper.cst_testCookieValue);
+		Cookie testCookie = new Cookie(ApplicationHelper.CST_TEST_COOKIE_NAME, 
+				ApplicationHelper.CST_TEST_COOKIE_VALUE);
 		resp.addCookie(testCookie);
-		resp.sendRedirect(ApplicationHelper.cst_API_path + 
-				ApplicationHelper.cst_API_generateSessionId);
+		resp.sendRedirect(ApplicationHelper.CST_API_PATH + 
+				ApplicationHelper.CST_API_GENERATE_SESSION_ID);
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value=ApplicationHelper.cst_API_generateSessionId,
+	@RequestMapping(value=ApplicationHelper.CST_API_GENERATE_SESSION_ID,
 		method = RequestMethod.GET)
 	@ResponseBody
     public QueryResult<String> generateSessionId(HttpServletRequest req, 
@@ -168,8 +168,8 @@ public class ApiController {
 			Boolean cookieSupport = sessionService.checkCookieSupport(req);
 			String sessionId = sessionService.generateSessionId(req, resp,cookieSupport);
 			
-			result = (QueryResult<String>) QueryResult.CreateFromSuccess(sessionId);
-			result.setMessage(ApplicationHelper.cst_cookieSupport +
+			result = (QueryResult<String>) QueryResult.createFromSuccess(sessionId);
+			result.setMessage(ApplicationHelper.CST_COOKIE_SUPPORT +
 					cookieSupport);	
 
 		}catch(Exception e){

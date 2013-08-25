@@ -34,7 +34,7 @@ public class PublicAccessService extends AbstractService{
 		Restaurant r = restaurantDAO.getRestaurantById(restaurantId);
 		if(r == null){
 			this.ThrowException(new NullPointerException(
-					ApplicationHelper.NullPointerExceptionMssg));
+					ApplicationHelper.NULL_POINTER_EXCEPTION_MSG));
 		}
 		return r;
 	}
@@ -43,7 +43,7 @@ public class PublicAccessService extends AbstractService{
 		List<Menu> menus= restaurantDAO.getMenu(restaurantId);
 		if(menus.isEmpty()){
 			this.ThrowException(new NullPointerException(
-					ApplicationHelper.NullPointerExceptionMssg));
+					ApplicationHelper.NULL_POINTER_EXCEPTION_MSG));
 		}
 		return menus;
 	}
@@ -53,7 +53,7 @@ public class PublicAccessService extends AbstractService{
 		Menu menu = menuDAO.getMenuById(menuId);
 		if(menu == null){
 			this.ThrowException(new NullPointerException(
-					ApplicationHelper.NullPointerExceptionMssg));
+					ApplicationHelper.NULL_POINTER_EXCEPTION_MSG));
 		}
 		return menu;
 	}
@@ -62,7 +62,7 @@ public class PublicAccessService extends AbstractService{
 		List<MenuItem> menuItems= menuDAO.getAllMenuItems(menuId);
 		if(menuItems.isEmpty()){
 			this.ThrowException(new NullPointerException(
-					ApplicationHelper.NullPointerExceptionMssg));
+					ApplicationHelper.NULL_POINTER_EXCEPTION_MSG));
 		}
 		return menuItems;
 	}
@@ -71,7 +71,7 @@ public class PublicAccessService extends AbstractService{
 		MenuItem menuItem = menuDAO.getMenuItemById(menuItemId);
 		if(menuItem == null){
 			this.ThrowException(new NullPointerException(
-					ApplicationHelper.NullPointerExceptionMssg));
+					ApplicationHelper.NULL_POINTER_EXCEPTION_MSG));
 		}
 		
 		return menuItem;

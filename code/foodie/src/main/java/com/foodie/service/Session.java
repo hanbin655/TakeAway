@@ -16,11 +16,11 @@ public class Session {
 	
 
 	public Session(){
-		userId = ApplicationHelper.cst_Anonymous;
+		userId = ApplicationHelper.CST_ANONYMOUS;
 		cookieSupport = false;
 	}
 	public Session(Boolean cookieSupport){
-		userId = ApplicationHelper.cst_Anonymous;
+		userId = ApplicationHelper.CST_ANONYMOUS;
 		cookieSupport = false;
 		this.cookieSupport = cookieSupport;
 	}

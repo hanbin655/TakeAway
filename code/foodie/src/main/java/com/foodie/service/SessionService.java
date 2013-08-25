@@ -39,7 +39,7 @@ public class SessionService extends AbstractService {
 		Session session = createNewSession(cookieSupport);
 		String sessionId = session.getSessionId();
 		if(cookieSupport){
-			Cookie sessionCookie = new Cookie(ApplicationHelper.cst_SessionCookie,
+			Cookie sessionCookie = new Cookie(ApplicationHelper.CST_SESSION_COOKIE,
 					sessionId);
 			resp.addCookie(sessionCookie);
 		}
@@ -53,8 +53,8 @@ public class SessionService extends AbstractService {
 		
 		if(cookies != null){
 			for(Cookie c :cookies){
-				if(c.getName().equals(ApplicationHelper.cst_testCookieName)
-						&& c.getValue().equals(ApplicationHelper.cst_testCookieValue)){
+				if(c.getName().equals(ApplicationHelper.CST_TEST_COOKIE_NAME)
+						&& c.getValue().equals(ApplicationHelper.CST_TEST_COOKIE_VALUE)){
 					cookieSupport = true;
 					break;
 				}

@@ -23,7 +23,7 @@ public class QueryResult<T> {
         setData(data);
 	}
 		
-	public static QueryResult<?> CreateFromSuccess(Object result){
+	public static QueryResult<?> createFromSuccess(Object result){
         return new QueryResult<Object>(true, result);
 	}
 	public static QueryResult<?> CreateFromFailure(String exceptionString){
