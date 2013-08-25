@@ -1,0 +1,11 @@
+<Methods>
+	<Method class = "com.foodie.simple.StateTest" method = "isLogin" >
+		<Return>true</Return>
+	</Method>
+	<Method class = "com.foodie.simple.StateTest" method = "isNewAddress" >
+		<Params>
+			<Param type = "java.lang.Boolean" name = "isNewAddress"/>
+		</Params>
+		<Return>false</Return>
+	</Method>
+</Methods>
