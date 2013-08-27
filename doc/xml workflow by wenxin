@@ -1,0 +1,232 @@
+//Method map to possible states xml
+//File name: MethodMap.xml
+<Root>
+	<Methods>
+		<Method>
+			<Name>
+				setAddressById
+			</Name>
+			<Step>
+				2
+			</Step>
+			<ValidSates>
+				<ValidSate>
+					OrderItemSpecified
+				</ValidSate>
+			</ValidStates>
+			<PossibleSates>
+				<PossibleSate>
+					AddressSpecified
+				</PossibleSate>
+			</PossibleSates>
+		</Method>
+	</Methods>
+</Root>
+
+//Sate xml
+//File name: AddressSpecified.xml
+<Root>
+	<State>
+		<StateId>
+			3
+		</StateId>
+		<StateName>
+			AddressSpecified
+		</StateName>
+		<Step>
+			2
+		</Step>
+		<InitialFields>			
+			<Field>
+				<Name>
+					IsLogin
+				</Name>
+				<Value>
+					true
+				</Value>
+			</Field>			
+		</InitialFields>
+		<Scenarios>
+			<Scenario>
+				<Method>
+					setAddressById
+				</Method>
+				<Conditions>
+					<Condition>
+						<Function>
+							getIsLogin
+						</Function>										
+						<Assert>
+							<Type>
+								bool
+							</Type>
+							<Value>
+								true
+							</Value>
+						</Assert>
+					</Condition>
+					<Condition>
+						<Function>
+							isNewAddress
+						</Function>					
+						<Assert>
+							<Type>
+								bool
+							</Type>
+							<Value>
+								false
+							</Value>
+						</Assert>
+					</Condition>
+				</Conditions>
+			</Scenario>		
+		</Scenarios>
+	</State>
+</Root>
+
+//controller method
+Function setAddressById(sessionId, addressId)
+{
+	var currentSession = getSession(sessionId);
+	var state = currentSession.Sate;
+	
+	if(state.canCall(this.GetFunctionName()));
+	{
+		//Do set address here
+	}
+	
+	state.checkState(this.GetFunctionName());
+}
+
+//Base state
+Class State
+{
+Function canCall(methodName)
+{	
+	var xml = getXml("MethodMap.xml");
+	foreach(var method in xml.Methods)
+	{
+		if(method.Name == methodName)
+		{
+			if(this.Step > method.Step)
+			{
+				return true;
+			}
+			else 
+			{
+				var validStates = method.ValidStates;
+				foreach(var validState in validStates)
+				{
+					if(this.Name == validState)
+					{
+						return true;
+					}
+				}
+			}
+		}		
+	}
+	return false;
+}
+
+Function checkState(methodName)
+{	
+	var possibleStates = getPossibleSates(methodName);
+	
+	foreach(var stateName in possibleStates)
+	{
+		if(validSate(methodName, stateName))
+		{
+			gotoState(stateName);
+		}
+	}	
+}
+
+Function getPossibleSates(methodName)
+{
+	var xml = getXml("MethodMap.xml");
+	foreach(var method in xml.Methods)
+	{
+		if(method.Name == methodName)
+		{
+			return method.PossibleSates;
+		}
+	}
+}
+
+Function validSate(methodName, stateName)
+{
+	var xml = getXml(stateName); 
+	var state = xml.State;
+	if(this.Step > state.Step)
+	{
+		return true;
+	}else
+	{
+		var scenarios = state.Scenarios;
+		foreach(var scenario in scenarios)
+		{
+			if(scenario.Method == methodName)
+			{
+				var conditions = scenario.Conditions;
+				var valid = true;
+				foreach(var condition in conditions)
+				{					
+					var stateClass = Instance(stateName);
+					var funcName = condition.Function;
+					var result = Invoke(stateClass, funcName);
+					var assert = condition.Assert;
+					var assertValue = (assert.Type) assert.Value;
+					
+					if(!equals(result, assertValue))
+					{
+						valid = false;
+					}
+				}
+				if(valid)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+	}
+}
+
+Function gotoState(stateName)
+{
+	this = Instance(stateName);	
+}
+
+Function Instance(stateName)
+{
+	var xml = getXml(stateName); 
+	var data = xml.State;
+	var state = new Class<stateName>();
+	
+	state.StateId = data.StateId;
+	state.Step = data.Step;
+	
+	var initialFields = data.InitialFields;
+	foreach(var field in initialFields)
+	{
+		state.setProperty(field.Name, field.Value); 
+	}
+	
+	return state;
+}
+
+}
+
+//state method
+Class AddressSpecifiedState
+{
+	Function getIsLogin()
+	{
+		return this.IsLogin;
+	}
+}
+
+
