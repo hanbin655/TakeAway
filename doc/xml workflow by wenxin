@@ -1,3 +1,40 @@
+总的来说，我的设计基于以下几个前提。
+1。 流程是树状的，有明显的层级，层级由低到高递增
+2。 低一层级的状态需要判断条件才能进入高一状态，高一层级的状态可以直接跳入前任低层级的状态
+
+xml文件主要有2部分。
+
+第一部分是根据每一个api方法列出所对应的低状态和高状态以及最高对应的层级，例：setAddressId 的最高对应层级是2， 
+也就是说只要当前的状态的层级是大于2的，那么这个api就可以直接被调用。 第一部分的xml文件只有一个。
+
+第二部分是根据每一个状态独立列出的文件，该文件包含Id，层级（step），初始值（initialFields） 和 
+可能进入该状态的方法和条件（Scenarios）
+
+在每一个 api方法被调用前检测是否可以调用，调用之后再检测进入了什么状态。
+
+调用前检测：canCall
+1。从MethodMap中查找对应的api定义的节点 
+2。如果当前状态的层级高于节点中定义的层级，那么直接返回true
+3。否则，查找当前状态是否是可以调用此api的状态
+
+调用后检测：checkState
+1。从MethodMap中查找此api可能进入的高一层状态 getPossibleSates
+2。从可能进入的状态中检查是否符合进入下一状态的条件 validSate
+3。如果符合条件，那么立即进入 gotoState
+
+关于判断条件检测 validSate:
+1.通过api方法找到进入下一状态的所有必须条件
+2.根据条件中的方法名 调用当前状态的方法，获得结果
+3.判断执行方法的结果是否和条件中列出的结果相同
+
+注意：要进入该状态的条件是列入到该状态中的，但是调用的是当前状态的方法。
+比如：要进入AddressSpecified状态的条件是列入到AddressSpecified.xml中的但是其中的方法getIsLogin需要
+在OrderItemSpecified状态的class中定义
+
+
+
+样例xml和伪代码:
+
 //Method map to possible states xml
 //File name: MethodMap.xml
 <Root>
@@ -67,7 +104,7 @@
 					</Condition>
 					<Condition>
 						<Function>
-							isNewAddress
+							getIsNewAddress
 						</Function>					
 						<Assert>
 							<Type>
@@ -171,10 +208,9 @@ Function validSate(methodName, stateName)
 				var conditions = scenario.Conditions;
 				var valid = true;
 				foreach(var condition in conditions)
-				{					
-					var stateClass = Instance(stateName);
+				{	
 					var funcName = condition.Function;
-					var result = Invoke(stateClass, funcName);
+					var result = Invoke(this, funcName);
 					var assert = condition.Assert;
 					var assertValue = (assert.Type) assert.Value;
 					
