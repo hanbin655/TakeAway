@@ -137,6 +137,7 @@ Function checkState(methodName)
 		if(validSate(methodName, stateName))
 		{
 			gotoState(stateName);
+			return;
 		}
 	}	
 }
