@@ -19,7 +19,7 @@ import org.xml.sax.SAXException;
 import com.google.appengine.repackaged.com.google.common.base.StringUtil;
 
 public class StateTest {
-    
+/*    
     public class IsNewAddressRequest {
         private Boolean isNewAddress;
         public Boolean getIsNewAddress() {
@@ -116,5 +116,5 @@ public class StateTest {
         }
         
     }
-
+*/
 }

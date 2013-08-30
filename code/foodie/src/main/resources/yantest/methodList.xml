@@ -1,0 +1,42 @@
+<methods>
+	<method>
+		<name>isValidAddressId</name>
+		<class>com.foodie.yan.ValidateService</class>
+		<params>
+			<param>
+				<name>sessionId</name>
+				<type>java.lang.String</type>
+			</param>
+			<param>
+				<name>addressId</name>
+				<type>java.lang.String</type>
+			</param>
+		</params>
+	</method>
+	
+	<method>
+		<name>isLogin</name>
+		<class>com.foodie.yan.ValidateService</class>
+		<params>
+			<param>
+				<name>sessionId</name>
+				<type>java.lang.String</type>
+			</param>
+		</params>
+	</method>
+	<method>
+		<name>isValidAddress</name>
+		<class>com.foodie.yan.ValidateService</class>
+		<params>
+		    <param>
+				<name>sessionId</name>
+				<type>java.lang.String</type>
+			</param>
+			<param>
+				<name>address</name>
+				<type>com.foodie.model.Location</type>
+			</param>
+		</params>
+	</method>
+	
+</methods>
