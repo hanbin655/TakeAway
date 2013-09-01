@@ -42,6 +42,19 @@
 					<false>OrderSpecified</false>
 				</end-state>
 			</api>
+			<api>
+				<url>createNewUser</url>
+				<condition>
+					<statement id="1">isLogin</statement>
+					<statement id="2">isValidAddress</statement>
+				</condition>
+				<end-state>
+				        <default>OrderSpecified</default>
+				        <states>
+				        	<state rule="1 AND 2">AddressSpecified</state>
+				        </states>
+				</end-state>
+			</api>
 		</api-list>
 	</state>
 </states>
