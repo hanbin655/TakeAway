@@ -19,7 +19,6 @@ import org.xml.sax.SAXException;
 import com.google.appengine.repackaged.com.google.common.base.StringUtil;
 
 public class StateTest {
-/*    
     public class IsNewAddressRequest {
         private Boolean isNewAddress;
         public Boolean getIsNewAddress() {
@@ -91,8 +90,8 @@ public class StateTest {
         Class<?> thisClass = Class.forName(node.getAttributes()
                 .getNamedItem("class").getNodeValue());
         Object obj = thisClass.getConstructor().newInstance();
-        boolean expectResult = Boolean.valueOf(((Element)node)
-                .getElementsByTagName("Return").item(0).getTextContent());
+        Element eleNode = (Element) node;
+        boolean expectResult = Boolean.valueOf(eleNode.getElementsByTagName("Return").item(0).getAttributes().getNamedItem("value").getNodeValue());
         Element element = (Element) node;
         if(element.getElementsByTagName("Params").getLength() == 0) {
             Method thisMethod = thisClass.getMethod(node.getAttributes()
@@ -116,5 +115,4 @@ public class StateTest {
         }
         
     }
-*/
 }
