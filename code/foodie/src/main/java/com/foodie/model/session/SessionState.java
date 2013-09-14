@@ -1,4 +1,4 @@
-package com.foodie.yan;
+package com.foodie.model.session;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -7,54 +7,51 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-public class State {
+import com.foodie.service.xmlparser.XmlMethodParser;
+import com.foodie.service.xmlparser.XmlRuleParser;
+
+public class SessionState {
 
 	private String stateName;
 	public String getState(){
 		return stateName;
 	}
 	
-	public State(String stateName){
+	//TODO: check if the state name is valid
+	public SessionState(String stateName){
 		this.stateName = stateName;
 	}
 	
+	//TODO: Too many exceptions thrown
 	public Boolean transfer(String url,HashMap<String,Object> paramMap) 
 			throws ParserConfigurationException, SAXException,
 			IOException, InstantiationException, IllegalAccessException, ClassNotFoundException,
 			SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
-		HashMap<String,APIRule> ruleMap = null;
-		ruleMap = XmlRuleParser.getInstance().get(stateName);
-		if(ruleMap == null){
+		
+		XmlMethodParser methodParser = XmlMethodParser.getInstance();
+		if(methodParser == null ){
 			return false;
 		}
+		XmlRuleParser ruleParser = XmlRuleParser.getInstance();
+		APIRule stateTransferRule = ruleParser.getAPIRule(stateName, url);
 		
-		HashMap<String,Method> methodList = null;
-		methodList = XmlMethodParser.getInstance();
-		if(methodList == null ){
-			return false;
-		}
-		
-		APIRule stateTransferRule = null;
-		stateTransferRule = ruleMap.get(url);
 		if(stateTransferRule == null ){
 			return false;
 		}
 		
 		
 		for(String methodName : stateTransferRule.statements){
-			Method methodMyType = methodList.get(methodName);
-			Object object = Class.forName(methodMyType.type).newInstance();
 			
-			int paramNum = methodMyType.paramType.size();
-			Class<?>[] paramTypeArray = new Class<?>[paramNum];
+			ValidationMethod validationMethod = methodParser.getMethod(methodName);
+			
+			int paramNum = validationMethod.paramType.size();
+			System.out.println(paramNum);
 			Object [] paramValueArray = new Object[paramNum];
 			for(int i = 0; i< paramNum ; i++){
-				paramTypeArray[i] = Class.forName(methodMyType.paramType.get(i));
-				paramValueArray[i] = paramMap.get(methodMyType.paramName.get(i));
+				paramValueArray[i] = paramMap.get(validationMethod.paramName.get(i));
 			}
-			java.lang.reflect.Method method = object.getClass().getDeclaredMethod(methodName, paramTypeArray);
-			Object returnValue = method.invoke(object,paramValueArray);
-			if(!(Boolean)returnValue){
+			Boolean returnValue = validationMethod.validate(paramValueArray);
+			if(!returnValue){
 				stateName = stateTransferRule.endState[0];
 				return false;
 			}

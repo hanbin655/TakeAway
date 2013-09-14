@@ -1,4 +1,4 @@
-package com.foodie.service;
+package com.foodie.model.session;
 
 import com.foodie.config.ApplicationHelper;
 import com.google.appengine.api.datastore.Key;

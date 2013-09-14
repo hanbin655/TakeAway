@@ -1,7 +1,7 @@
 <methods>
 	<method>
 		<name>isValidAddressId</name>
-		<class>com.foodie.yan.ValidateService</class>
+		<class>com.foodie.service.ValidateService</class>
 		<params>
 			<param>
 				<name>sessionId</name>
@@ -16,7 +16,7 @@
 	
 	<method>
 		<name>isLogin</name>
-		<class>com.foodie.yan.ValidateService</class>
+		<class>com.foodie.service.ValidateService</class>
 		<params>
 			<param>
 				<name>sessionId</name>
@@ -26,7 +26,7 @@
 	</method>
 	<method>
 		<name>isValidAddress</name>
-		<class>com.foodie.yan.ValidateService</class>
+		<class>com.foodie.service.ValidateService</class>
 		<params>
 		    <param>
 				<name>sessionId</name>

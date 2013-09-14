@@ -1,4 +1,4 @@
-package com.foodie.yan;
+package com.foodie.service.xmlparser;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,16 +14,31 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.foodie.model.session.ValidationMethod;
+
 public class XmlMethodParser {
 
-	private static HashMap<String,Method> methodMap;
-	
-	
-	public static HashMap<String, Method> getInstance() 
-			throws ParserConfigurationException, SAXException, IOException{
-		if(methodMap == null){
-			methodMap = new HashMap<String, Method>();
-			File fXmlFile = new File("src/main/resources/yantest/methodList.xml");
+	private static String xmlLocation = "src/main/resources/session/methodList.xml";
+	private HashMap<String,ValidationMethod> methodMap;
+	private static XmlMethodParser xmlMethodParser = null;
+	private boolean isLoaded = false;;
+	public boolean isLoaded(){
+		return isLoaded;
+	}
+	private XmlMethodParser(){
+		methodMap = new HashMap<String, ValidationMethod>();
+		try{
+			readFromXml();
+			isLoaded = true;
+		}catch(Exception e){
+			isLoaded = false;
+		}
+		
+	}
+	private void readFromXml() throws ParserConfigurationException,
+	SAXException, IOException{
+		if(!isLoaded){
+			File fXmlFile = new File(xmlLocation);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
@@ -33,7 +48,7 @@ public class XmlMethodParser {
 			NodeList methodNodeList = doc.getElementsByTagName("method");
 			
 			for(int i=0; i<methodNodeList.getLength(); i++){
-				Method method = new Method();
+				ValidationMethod method = new ValidationMethod();
 				Node methodNode = methodNodeList.item(i);
 				
 				String methodName = ((Element)methodNode).getElementsByTagName(
@@ -62,6 +77,20 @@ public class XmlMethodParser {
 				methodMap.put(methodName, method);
 			}
 		}
-		return methodMap;
+	}
+	public static XmlMethodParser getInstance() 
+			throws ParserConfigurationException, SAXException, IOException{
+		if(xmlMethodParser == null){
+			xmlMethodParser = new XmlMethodParser();
+		}
+		return xmlMethodParser;
+	}
+	
+	public ValidationMethod getMethod(String methodName){
+		ValidationMethod method = null;
+		if(isLoaded){
+			method = methodMap.get(methodName);
+		}
+		return method;
 	}
 }

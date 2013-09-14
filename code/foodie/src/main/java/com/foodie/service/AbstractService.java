@@ -1,7 +1,7 @@
 package com.foodie.service;
 
 public abstract class AbstractService{
-	public void ThrowException(NullPointerException exception) throws NullPointerException{
+	public void throwException(NullPointerException exception) throws NullPointerException{
 		throw exception;
 	}
 }

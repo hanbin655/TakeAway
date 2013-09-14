@@ -1,4 +1,4 @@
-package com.foodie.yan;
+package com.foodie.service;
 
 import com.foodie.model.Location;
 

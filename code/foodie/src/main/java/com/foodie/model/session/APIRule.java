@@ -1,4 +1,4 @@
-package com.foodie.yan;
+package com.foodie.model.session;
 
 public class APIRule {
 

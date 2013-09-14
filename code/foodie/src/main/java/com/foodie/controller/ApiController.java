@@ -22,7 +22,6 @@ import com.foodie.model.Restaurant;
 import com.foodie.service.DataStoreSetup;
 import com.foodie.service.NameListService;
 import com.foodie.service.PublicAccessService;
-import com.foodie.service.Session;
 import com.foodie.service.SessionService;
 import com.google.appengine.api.datastore.KeyFactory;
 

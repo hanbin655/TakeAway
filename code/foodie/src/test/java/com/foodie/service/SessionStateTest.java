@@ -1,4 +1,4 @@
-package com.foodie.yan;
+package com.foodie.service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,11 +11,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
-public class MainTest {
+import com.foodie.model.session.SessionState;
+
+public class SessionStateTest {
 
 	@Test
 	public void stateTransitTest() throws SecurityException, IllegalArgumentException, ParserConfigurationException, SAXException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException{
-		State state = new State("OrderSpecified");
+		SessionState state = new SessionState("OrderSpecified");
 		String url = "setAddressById";
 		HashMap<String,Object> paramMap = new HashMap<String, Object>();
 		String sessionIdLabel = "sessionId";
@@ -24,7 +26,8 @@ public class MainTest {
 		String addressIdLabel = "addressId";
 		String addressIdValue = "afasdfadf";
 		paramMap.put(addressIdLabel, addressIdValue);
-		state.transfer(url, paramMap);
-		assertEquals(state.getState(),"AddressSpecified");
+		Boolean sucessFlag = state.transfer(url, paramMap);
+		assertEquals(sucessFlag,true);
+		assertEquals("AddressSpecified",state.getState());
 	}
 }
