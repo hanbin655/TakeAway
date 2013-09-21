@@ -1,0 +1,92 @@
+#page{
+	width:960px;
+	text-align:center;
+	border: 1px;
+	background-color: #FFFFCC;
+	margin:0px auto 10px auto;
+}
+
+#header{
+	min-height:100px;
+	border-bottom:1px;
+	border-bottom-style:solid;
+}
+
+#header_image{
+	width:960px;
+	height:100px;
+}
+#rstrnt_info{
+	float:left;
+	width:320px;
+	margin:0 10px 0 10px;
+	
+}
+#rcmmndtn_sec{
+	float:left;
+	width:600px;
+	margin:0 10px 0 10px;
+
+}
+#middle{
+	clear:left;
+	width:100%;
+	height:320px;
+
+}
+#menu_info{
+	width:620px;
+	margin:5px 0 0 10px;
+	float:left;
+	clear:left;
+	background-color:#009900;
+}
+#order_info{
+	width:300px;
+	height:320px;
+	margin:5px 0 0 10px;
+	float:left;
+}
+
+#above{
+	clear:both;
+	margin:0;
+	height:250px;
+}
+#comment{
+	clear:both;
+	width:940px;
+	margin:10px;
+	border:1px;
+	border-style:solid;
+	margin-bottom:0px;
+}
+#footer{
+	width:940px;
+	margin:0px 10px 0px 10px;
+	border:1px;
+	border-style:solid;
+}
+
+#menu_table{
+	width:620px;
+	margin:0 0 0 0;
+	
+}
+#order_table{
+	width:300px;
+}
+.sep_col{
+	border-right-style:solid;
+	border-right-color:#000000;
+}
+.tbl_sub_total{
+	border-top: 1px solid black;
+	
+}
+.tbl_head{
+	border-bottom:solid 1px black;
+}
+#tbl_rstrnt_info{
+	width:320px;
+}
