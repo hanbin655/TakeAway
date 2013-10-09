@@ -4,6 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>选餐</title>
 <link href="../stylesheets/test.css" type="text/css" rel="stylesheet" />
+<!--<script type="text/javascript" src="script/item_selection.js"></script> -->
+<script type='text/javascript' src='knockout-2.3.0.js'></script>
+<script type="text/javascript" src="ajaxProxy.js"></script>
+<link type="text/css" rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </head>
 <body>
 <div id="page">
@@ -49,46 +56,19 @@
 	<div id="middle">
 		<div id="menu_info">
 			<table id="menu_table">
-				<tr>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td class="sep_col">plus</td>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td>plus</td>
-				</tr>
-				<tr>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td class="sep_col">plus</td>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td>plus</td>
-				</tr>
-				<tr>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td class="sep_col">plus</td>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td>plus</td>
-				</tr>
-				<tr>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td class="sep_col">plus</td>
-					<td><img src="img/placeholder_logo.png"/></td>
-					<td>某菜</td>
-					<td>￥1.5</td>
-					<td>plus</td>
-				</tr>
+				<thead>
+					<tr><th>图片</th><th>菜品</th><th>价格</th><th>添加</th></tr>
+				</thead>
+				<tbody data-bind="foreach: menuItems">
+					<tr>
+						<td><img src="img/placeholder_logo.png"/></td>
+						<td data-bind="text: itemName"></td>
+						<td data-bind="text: itemPrice"></td>
+						<td class="sep_col">plus</td>
+					</tr>
+				</tbody>
+			
+				<script type="text/javascript" src="script/item_selection.js"></script>
 			</table>
 		</div><!-- end menu_info-->
 		<div id="order_info">
