@@ -3,14 +3,19 @@ package com.foodie.controller;
 import com.foodie.BaseSpringTest;
 import com.foodie.model.Location;
 import com.foodie.model.LoginInfo;
+import com.foodie.model.Order;
+import com.foodie.model.PaymentInfo;
 import com.foodie.model.Restaurant;
 import com.foodie.model.User;
 import com.foodie.model.request.CreateNewUserRequest;
 import com.foodie.model.session.Session;
 import com.foodie.repository.AddressDAO;
 import com.foodie.repository.MenuDAO;
+import com.foodie.repository.OrderDAO;
 import com.foodie.repository.PMF;
 import com.foodie.repository.SessionDAO;
+import com.foodie.repository.UserDAO;
+import com.foodie.service.OrderService;
 import com.foodie.util.json.JSONBinder;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -29,6 +34,12 @@ import javax.jdo.PersistenceManager;
 import junit.framework.Assert;
 
 public class ApiControllerTest extends BaseSpringTest {
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    OrderDAO orderDao;
+    @Autowired
+    UserDAO userDAO;
     @Autowired
     private MenuDAO menuDAO;
     @Autowired
@@ -62,7 +73,7 @@ public class ApiControllerTest extends BaseSpringTest {
         loc2.setCity(city2);
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/api/address/setAddress").param("sessionId", KeyFactory.keyToString(session.getSessionId())).content(JSONBinder.binder(Location.class).toJSON(loc2))
-                        .contentType(MediaType.APPLICATION_JSON)).andDo(MockMvcResultHandlers.print());
+                        .contentType(MediaType.APPLICATION_JSON));
         Assert.assertEquals(city2, PMF.get().getPersistenceManager().getObjectById(User.class, user.getUserId()).getDeliveryAddresses().get(1).getCity());
 
     }
@@ -73,7 +84,7 @@ public class ApiControllerTest extends BaseSpringTest {
         String city = "quanzhou";
         loc.setCity(city);
         pmf.makePersistent(loc);
-        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressById/" + KeyFactory.keyToString(loc.getLocationId()))).andDo(MockMvcResultHandlers.print()).andReturn()
+        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressById/" + KeyFactory.keyToString(loc.getLocationId()))).andReturn()
                 .getResponse().getContentAsString();
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertEquals(city, json.getJSONObject("data").getString("city"));
@@ -113,7 +124,7 @@ public class ApiControllerTest extends BaseSpringTest {
 
     @Test
     public void testUTF_8() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/test/utf-8")).andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/test/utf-8")).andExpect(MockMvcResultMatchers.status().isOk());
     }
     @Test
     public void testUserLogin() throws Exception {
@@ -134,6 +145,47 @@ public class ApiControllerTest extends BaseSpringTest {
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertTrue(json.getBoolean("data"));
     }
+    
+    @Test
+    public void testSetOrder() throws Exception {
+        Session session = new Session();
+        String password = "123456";
+        String userName = "jim";
+        User user = new User(userName, password, null, null, null);
+        userDAO.persist(user);
+        session.setUserId(KeyFactory.keyToString(user.getUserId()));
+        sessionDAO.persist(session);
+        Order order = new Order();
+        order.setUserId(KeyFactory.keyToString(user.getUserId()));
+        JSONBinder<Order> binder = JSONBinder.binder(Order.class);
+        System.out.println(binder.fromJSON(binder.toJSON(order)));
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/order/setOrder").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
+                .content(JSONBinder.binder(Order.class).toJSON(order))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+    
+    @Test
+    public void testSetPaymentInfo() throws Exception {
+        Session session = new Session();
+        String password = "123456";
+        String userName = "jim";
+        User user = new User(userName, password, null, null, null);
+        userDAO.persist(user);
+        session.setUserId(KeyFactory.keyToString(user.getUserId()));
+        sessionDAO.persist(session);
+        Order order = new Order();
+        order.setUserId(KeyFactory.keyToString(user.getUserId()));
+        orderDao.persist(order);
+        PaymentInfo paymentInfo = new PaymentInfo();
+        paymentInfo.setOrderId(KeyFactory.keyToString(order.getOrderId()));
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/paymentInfo/setPaymentInfo").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
+                .content(JSONBinder.binder(PaymentInfo.class).toJSON(paymentInfo))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+ 
     @Test
     public void testCreateNewUser() throws Exception {
         Session session = new Session();
@@ -156,7 +208,6 @@ public class ApiControllerTest extends BaseSpringTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/user/createNewUser")
                 .content(JSONBinder.binder(CreateNewUserRequest.class).toJSON(request))
                 .contentType(MediaType.APPLICATION_JSON))
-                .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
                 
         session = pmf.getObjectById(Session.class, session.getSessionId());

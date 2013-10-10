@@ -21,12 +21,15 @@ import com.foodie.model.Location;
 import com.foodie.model.LoginInfo;
 import com.foodie.model.Menu;
 import com.foodie.model.MenuItem;
+import com.foodie.model.Order;
+import com.foodie.model.PaymentInfo;
 import com.foodie.model.People;
 import com.foodie.model.Restaurant;
 import com.foodie.model.request.CreateNewUserRequest;
 import com.foodie.service.AddressService;
 import com.foodie.service.DataStoreSetup;
 import com.foodie.service.NameListService;
+import com.foodie.service.OrderService;
 import com.foodie.service.PublicAccessService;
 import com.foodie.service.SessionService;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -39,6 +42,8 @@ public class ApiController {
     NameListService nameService;
 
     @Autowired
+    OrderService orderService;
+    @Autowired
     PublicAccessService publicAccessService;
 
     @Autowired
@@ -47,6 +52,17 @@ public class ApiController {
     @Autowired
     SessionService sessionService;
 
+    @RequestMapping(value = "/order/setOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public QueryResult<String> setOrder(@RequestParam String sessionId, @RequestBody Order order) {
+        return QueryResult.createFromSuccess(orderService.setOrder(sessionId, order));
+    }
+    
+    @RequestMapping(value = "/paymentInfo/setPaymentInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public QueryResult<String> setPaymentInfo(@RequestParam String sessionId,@RequestBody PaymentInfo paymentInfo) {
+        return QueryResult.createFromSuccess(orderService.setPaymentInfo(sessionId, paymentInfo));
+    }
     @SuppressWarnings("unchecked")
     @RequestMapping(value = ApplicationHelper.CST_API_GET_NAME_LIST, method = RequestMethod.GET)
     @ResponseBody
