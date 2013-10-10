@@ -1,65 +1,48 @@
 package com.foodie.controller;
 
-import com.foodie.config.AppConfig;
+import com.foodie.BaseSpringTest;
 import com.foodie.model.Location;
+import com.foodie.model.LoginInfo;
 import com.foodie.model.Restaurant;
 import com.foodie.model.User;
+import com.foodie.model.request.CreateNewUserRequest;
 import com.foodie.model.session.Session;
 import com.foodie.repository.AddressDAO;
 import com.foodie.repository.MenuDAO;
 import com.foodie.repository.PMF;
+import com.foodie.repository.SessionDAO;
 import com.foodie.util.json.JSONBinder;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
-import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.util.StringUtils;
 
 import javax.jdo.PersistenceManager;
 
 import junit.framework.Assert;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AppConfig.class })
-@WebAppConfiguration
-public class ApiControllerTest {
-    @Autowired
-    private WebApplicationContext webApplicationContext;
-
+public class ApiControllerTest extends BaseSpringTest {
     @Autowired
     private MenuDAO menuDAO;
     @Autowired
+    private SessionDAO sessionDAO;
+    @Autowired
     private AddressDAO addressDAO;
-    private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
     private PersistenceManager pmf;
-
-    protected MockMvc mockMvc;
+    @Autowired
+    private ApiController apiController;
 
     @Before
     public void init() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        helper.setUp();
+        super.init();
         pmf = PMF.get().getPersistenceManager();
-    }
-
-    @After
-    public void dispose() {
-        helper.tearDown();
     }
 
     @Test
@@ -105,7 +88,7 @@ public class ApiControllerTest {
         loc.setCity(city);
         user.getDeliveryAddresses().add(loc);
         pmf.makePersistent(user);
-        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressByUserId/" + KeyFactory.keyToString(user.getUserId()))).andDo(MockMvcResultHandlers.print()).andReturn()
+        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressByUserId/" + KeyFactory.keyToString(user.getUserId()))).andReturn()
                 .getResponse().getContentAsString();
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertEquals(city, json.getJSONArray("data").getJSONObject(0).getString("city"));
@@ -122,7 +105,7 @@ public class ApiControllerTest {
         restaurant.setLocation(loc);
         pmf.makePersistent(restaurant);
         String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressByRestaurantId/" + KeyFactory.keyToString(restaurant.getRestaurantId())))
-                .andDo(MockMvcResultHandlers.print()).andReturn().getResponse().getContentAsString();
+                .andReturn().getResponse().getContentAsString();
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertEquals(city, json.getJSONArray("data").getJSONObject(0).getString("city"));
 
@@ -131,6 +114,57 @@ public class ApiControllerTest {
     @Test
     public void testUTF_8() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/test/utf-8")).andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+    @Test
+    public void testUserLogin() throws Exception {
+        Session session = new Session();
+        String password = "123456";
+        String userName = "jim";
+        User user = new User(userName, password, null, null, null);
+        pmf.makePersistent(session);
+        pmf.makePersistent(user);
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setUserName(userName);
+        loginInfo.setPassword(password);
+        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.post("/api/user/login").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
+                .content(JSONBinder.binder(LoginInfo.class).toJSON(loginInfo))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn().getResponse().getContentAsString();
+        JSONObject json = new JSONObject(jsonStr);
+        Assert.assertTrue(json.getBoolean("data"));
+    }
+    @Test
+    public void testCreateNewUser() throws Exception {
+        Session session = new Session();
+        String password = "123456";
+        String userName = "jim";
+        sessionDAO.persist(session);
+        User user = new User(userName, password, null, null, null);
+        Location location = new Location();
+        String city = "quanzhou";
+        location.setCity(city);
+        CreateNewUserRequest request = new CreateNewUserRequest();
+        request.setSessionId(KeyFactory.keyToString(session.getSessionId()));
+        request.setUser(user);
+        request.setLocation(location);
+        JSONBinder<User> userBinder = JSONBinder.binder(User.class);
+        System.out.println(userBinder.fromJSON(userBinder.toJSON(user)));
+        JSONBinder<CreateNewUserRequest> binder = JSONBinder.binder(CreateNewUserRequest.class);
+        System.out.println(binder.toJSON(request));
+        System.out.println(binder.fromJSON(binder.toJSON(request)));
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/createNewUser")
+                .content(JSONBinder.binder(CreateNewUserRequest.class).toJSON(request))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+                
+        session = pmf.getObjectById(Session.class, session.getSessionId());
+        Assert.assertFalse(StringUtils.isEmpty(session.getUserId()));
+        user = pmf.getObjectById(User.class, session.getUserId());
+        Assert.assertEquals(userName, user.getUserName());
+        Assert.assertEquals(city, user.getDeliveryAddresses().get(0).getCity());
+        
     }
 
 }

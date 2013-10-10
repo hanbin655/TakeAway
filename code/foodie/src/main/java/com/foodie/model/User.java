@@ -44,6 +44,7 @@ public class User {
         this.email = email;
         this.phoneNO = phoneNO;
         this.name = name;
+        this.logo = new byte[0];
     }
 
     public Key getUserId() {

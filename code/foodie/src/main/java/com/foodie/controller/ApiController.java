@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.foodie.config.ApplicationHelper;
 import com.foodie.model.Location;
+import com.foodie.model.LoginInfo;
 import com.foodie.model.Menu;
 import com.foodie.model.MenuItem;
 import com.foodie.model.People;
 import com.foodie.model.Restaurant;
+import com.foodie.model.request.CreateNewUserRequest;
 import com.foodie.service.AddressService;
 import com.foodie.service.DataStoreSetup;
 import com.foodie.service.NameListService;
@@ -136,6 +138,18 @@ public class ApiController {
         Cookie testCookie = new Cookie(ApplicationHelper.CST_TEST_COOKIE_NAME, ApplicationHelper.CST_TEST_COOKIE_VALUE);
         resp.addCookie(testCookie);
         resp.sendRedirect(ApplicationHelper.CST_API_PATH + ApplicationHelper.CST_API_GENERATE_SESSION_ID);
+    }
+    
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    @ResponseBody
+    public QueryResult<Boolean> login(@RequestParam String sessionId, @RequestBody LoginInfo loginInfo) {
+        return QueryResult.createFromSuccess(publicAccessService.login(sessionId, loginInfo));
+    }
+    
+    @RequestMapping(value = "/user/createNewUser", method = RequestMethod.POST)
+    @ResponseBody
+    public QueryResult<String> createNewUser(@RequestBody CreateNewUserRequest request) {
+        return QueryResult.createFromSuccess(publicAccessService.createNewUser(request.getSessionId(), request.getUser(), request.getLocation()));
     }
     
     @RequestMapping(value = ApplicationHelper.CST_API_ADDRESS_SET_ADDRESS, method = RequestMethod.POST)

@@ -2,7 +2,6 @@ package com.foodie.service;
 
 import com.foodie.model.Location;
 import com.foodie.repository.AddressDAO;
-import com.foodie.util.json.JSONBinder;
 import com.google.appengine.api.datastore.KeyFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
