@@ -40,7 +40,7 @@ public class DataStoreSetup{
     			TestHelper.cst_Dscrpt1,location);
     	restaurantDAO.add(r);
     	
-    	Key key = KeyFactory.stringToKey(r.getRestaurantId());
+    	Key key = r.getRestaurantId();
     	
     	Menu menu = new Menu(TestHelper.cst_MenuName1,
     			TestHelper.cst_MenuDscrpt1);

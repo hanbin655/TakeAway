@@ -38,7 +38,7 @@ public class SessionService extends AbstractService {
 	public String generateSessionId(HttpServletRequest req, 
 			HttpServletResponse resp, Boolean cookieSupport){
 		Session session = createNewSession(cookieSupport);
-		String sessionId = session.getSessionId();
+		String sessionId = KeyFactory.keyToString(session.getSessionId());
 		if(cookieSupport){
 			Cookie sessionCookie = new Cookie(ApplicationHelper.CST_SESSION_COOKIE,
 					sessionId);

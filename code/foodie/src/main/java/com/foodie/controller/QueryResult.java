@@ -23,11 +23,11 @@ public class QueryResult<T> {
         setData(data);
 	}
 		
-	public static QueryResult<?> createFromSuccess(Object result){
-        return new QueryResult<Object>(true, result);
+	public static <K> QueryResult<K> createFromSuccess(K result){
+        return new QueryResult<K>(true, result);
 	}
-	public static QueryResult<?> CreateFromFailure(String exceptionString){
-		return new QueryResult<Object>(false, exceptionString);
+	public static QueryResult<?> createFromFailure(String exceptionString){
+		return new QueryResult<String>(false, exceptionString);
 	}
 	
 }

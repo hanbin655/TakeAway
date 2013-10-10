@@ -55,7 +55,6 @@ public class MenuDAOImpl implements MenuDAO {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try{
 			pm.makePersistent(menu);
-			
 		}finally{
 			pm.close();
 		}
