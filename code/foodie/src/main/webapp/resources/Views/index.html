@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta charset="UTF-8">
+
+<title>Title of the document</title>
+
+<link type="text/css" rel="stylesheet" href="../Scripts/jquery/jquery-ui-1.10.3/themes/jquery-ui.min.css"/>
+<script type="text/javascript" src="../Scripts/jquery/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../Scripts/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="../Scripts/jquery/jquery-ui-1.10.3/jquery-ui-1.10.3.min.js"></script>
+<script type="text/javascript" src="../Scripts/knockout/knockout-2.3.0.js"></script>
+<script type="text/javascript" src="../Scripts/common/formatHelper.js"></script>
+<script type="text/javascript" src="../Scripts/common/apiProxy.js"></script>
+<script type="text/javascript" src="../Scripts/common/init.js"></script>
+
+
+<!-- This is for individual page -->
+<script type="text/javascript" src="../Scripts/pageScripts/index.js"></script>
+<!-- End-->
+
+</head>
+
+<body>
+<header></header>
+<div class="container">
+	<div class="wrap" data-bind="if:$data">
+		<h1 data-bind="text:name"></h1> 
+		<p data-bind="text:description"></p>
+		
+		<div data-bind="with:location">
+			<h3 data-bind="text:province"></h3>
+		</div>
+	</div>
+</div>
+<footer></footer>
+</body>
+</html>
+
