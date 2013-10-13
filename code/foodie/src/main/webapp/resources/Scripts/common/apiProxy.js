@@ -20,4 +20,24 @@ function callApi(url, data, onSuccess, onError){
 	});
 }
 
+function generalResponse(responseStr){
+	var self = this;
+	console.log("Start converting api to general response");
+	self = JSON.parse(responseStr);
+	self.isSuccess = ko.computed(function(){
+		return self.success;
+    });
+}
 
+
+var api = new apiConstructor();
+
+function apiConstructor(){
+	var self = this;
+	self.getHelloWorld = getHelloWorld;
+}
+
+function getHelloWorld(handleSuccess,handleError){
+	url = "getNameList";
+	callApi(url, null, handleSuccess, handleError);
+}

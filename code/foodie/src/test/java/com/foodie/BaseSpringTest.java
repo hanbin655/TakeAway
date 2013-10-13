@@ -6,6 +6,7 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -29,7 +30,12 @@ public class BaseSpringTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         helper.setUp();
     }
-
+    
+    @Test
+    public void dummy(){
+    	
+    }
+    
     @After
     public void dispose() {
         helper.tearDown();
