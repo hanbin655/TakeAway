@@ -1,4 +1,4 @@
-var webServiceUrl = "http://test.just4test.in/api/";
+var webServiceUrl = "/api/";
 function callApi(url, data, onSuccess, onError){
     url = webServiceUrl + url;
 
@@ -7,27 +7,16 @@ function callApi(url, data, onSuccess, onError){
 		type: data != null ? "POST" : "GET",
 		headers: {
 		    'Accept': "application/json",
-		    "Content-type" : "application/json",
-		    'Access-Control-Allow-Origin' : '*'
+		    "Content-type" : "application/json"
 		},
-		crossDomain: true,	
 		contentType: "application/json",
-		dataType : "jsonp",		
-		jsonpCallback: "handleSuccess",
 		data: data,
 		success: onSuccess,
 		error: onError
 	});
 }
 
-function generalResponse(responseStr){
-	var self = this;
-	console.log("Start converting api to general response");
-	self = JSON.parse(responseStr);
-	self.isSuccess = ko.computed(function(){
-		return self.success;
-    });
-}
+
 
 
 var api = new apiConstructor();

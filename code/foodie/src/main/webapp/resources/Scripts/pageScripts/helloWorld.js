@@ -4,14 +4,14 @@ function renderPage() {
     viewModel = new localViewModel();
 }
 
-function buildViewModel(){	
+function localViewModel(){	
 	var self = this;
 	self.data = ko.observableArray([]);
 	self.showData = ko.computed(function () {
-        return viewModel.data().length > 0;
+        return self.data().length > 0;
     });	
 	self.buttonText = ko.computed(function () {
-        if (viewModel.showData()) {
+        if (self.showData()) {
             return "Clear";
             
         } else {
@@ -20,18 +20,16 @@ function buildViewModel(){
     });	
 	
 	self.getList = function () {
-        if (viewModel.data().length > 0) {
-        	viewModel.data([]);
+        if (self.data().length > 0) {
+        	self.data([]);
         } else {
         	api.getHelloWorld(function(response){
-        		console.log("Api retuns data");    
-        	    //this generalResponse function is defined in apiProxy.js, it encapsulate the response string as a json object 
-        	    var result = new generalResponse(response);    
-        	    if (result.isSuccess()) {
+        		console.log("Api retuns data");
+        	    if (response.isSuccess) {
         	        console.log("Api retuns data with success");        
         	        self.data(result.data);
         	    } else {
-        	        handleUnsuccess(result);
+        	        handleUnsuccess(response);
         	    }
         	}, handleError);                  
         }
