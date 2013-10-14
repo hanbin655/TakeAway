@@ -25,7 +25,7 @@
 <body>
 <header></header>
 <div class="container">
-	<div class="wrap" data-bind="if:$data">
+	<div class="wrap" data-bind="visible: showData, with: data" >
 		<h1 data-bind="text:name"></h1> 
 		<p data-bind="text:description"></p>
 		

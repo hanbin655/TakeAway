@@ -1,34 +1,34 @@
-var url = "getRestaurantById?restaurantId={0}";
+
 function renderPage() {
-    var id = 'ag9zfmNvbmZ1c2VkLWxvc3RyEQsSClJlc3RhdXJhbnQYwT4M';
-    url = url.format(id);
-
-    console.log("Start calling api");
-    callApi(url, null,
-	handleSuccess,
-	handleError);
-
+    viewModel = new localViewModel();       
 }
 
+
+function localViewModel(){		
+	var self = this;	
+	console.log("Start calling api");    
+	self.data = ko.observable();	
+	self.showData = ko.computed(function () {
+        return self.data() && self.data().length > 0;
+    });		
+	
+	var id = 'ag9zfmNvbmZ1c2VkLWxvc3RyEQsSClJlc3RhdXJhbnQYwT4M';
+	api.getRestaurantById(id, handleSuccess, handleError);
+}
+
+
 function handleSuccess(response) {
-    console.log("Api retuns data");
-    var result = new generalResponse(response);
-    if (result.isSuccess()) {
+    console.log("Api retuns data");    
+    if (response.isSuccess) {
         console.log("Api retuns data with success");
-        viewModel = new localData(result.data);
+        viewModel.data(response.data);
     } else {
-        handleUnsuccess(result);
+        handleUnsuccess(response);
     }
 }
 
-function localData(data) {
-    console.log("Start building model for page view based on api data");
-    var self = this;
-    self = data;
-}
 
-
-function handleUnsuccess(result) {
+function handleUnsuccess(response) {
     console.log("api returns data with unsuccess");
 }
 

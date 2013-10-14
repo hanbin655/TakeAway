@@ -16,17 +16,21 @@ function callApi(url, data, onSuccess, onError){
 	});
 }
 
-
-
-
 var api = new apiConstructor();
 
 function apiConstructor(){
 	var self = this;
 	self.getHelloWorld = getHelloWorld;
+	self.getRestaurantById = getRestaurantById;
 }
 
 function getHelloWorld(handleSuccess,handleError){
 	url = "getNameList";
 	callApi(url, null, handleSuccess, handleError);
+}
+
+function getRestaurantById(id, handleSuccess,handleError){
+	var url = "getRestaurantById?restaurantId={0}";
+	url = url.format(id);
+	callApi(url, null, handleSuccess, handleError)
 }
