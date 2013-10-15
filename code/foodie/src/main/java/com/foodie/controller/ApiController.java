@@ -91,6 +91,7 @@ public class ApiController {
             Restaurant result = publicAccessService.getRestaurantById(KeyFactory.stringToKey(restaurantId));
             return (QueryResult<Restaurant>) QueryResult.createFromSuccess(result);
         } catch (Exception e) {
+            e.printStackTrace();
             return (QueryResult<Restaurant>) QueryResult.createFromFailure(e.getMessage());
         }
 

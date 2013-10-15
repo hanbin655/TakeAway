@@ -97,7 +97,6 @@ public class PublicAccessService extends AbstractService {
         if (session  == null) return null;
         user.addNewAddress(location);
         userDAO.persist(user);
-        System.out.println(user.getUserId());
         session.setUserId(KeyFactory.keyToString(user.getUserId()));
         sessionDAO.persist(session);
         return KeyFactory.keyToString(user.getUserId());

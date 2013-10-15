@@ -71,9 +71,8 @@ public class ApiControllerTest extends BaseSpringTest {
         Location loc2 = new Location();
         String city2 = "amoi";
         loc2.setCity(city2);
-        mockMvc.perform(
-                MockMvcRequestBuilders.post("/api/address/setAddress").param("sessionId", KeyFactory.keyToString(session.getSessionId())).content(JSONBinder.binder(Location.class).toJSON(loc2))
-                        .contentType(MediaType.APPLICATION_JSON));
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/address/setAddress").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
+                .content(JSONBinder.binder(Location.class).toJSON(loc2)).contentType(MediaType.APPLICATION_JSON));
         Assert.assertEquals(city2, PMF.get().getPersistenceManager().getObjectById(User.class, user.getUserId()).getDeliveryAddresses().get(1).getCity());
 
     }
@@ -84,8 +83,8 @@ public class ApiControllerTest extends BaseSpringTest {
         String city = "quanzhou";
         loc.setCity(city);
         pmf.makePersistent(loc);
-        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressById/" + KeyFactory.keyToString(loc.getLocationId()))).andReturn()
-                .getResponse().getContentAsString();
+        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressById/" + KeyFactory.keyToString(loc.getLocationId()))).andReturn().getResponse().getContentAsString();
+        System.out.println("jsonStr" + jsonStr);
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertEquals(city, json.getJSONObject("data").getString("city"));
 
@@ -99,8 +98,7 @@ public class ApiControllerTest extends BaseSpringTest {
         loc.setCity(city);
         user.getDeliveryAddresses().add(loc);
         pmf.makePersistent(user);
-        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressByUserId/" + KeyFactory.keyToString(user.getUserId()))).andReturn()
-                .getResponse().getContentAsString();
+        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressByUserId/" + KeyFactory.keyToString(user.getUserId()))).andReturn().getResponse().getContentAsString();
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertEquals(city, json.getJSONArray("data").getJSONObject(0).getString("city"));
 
@@ -115,8 +113,8 @@ public class ApiControllerTest extends BaseSpringTest {
         loc.setCity(city);
         restaurant.setLocation(loc);
         pmf.makePersistent(restaurant);
-        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressByRestaurantId/" + KeyFactory.keyToString(restaurant.getRestaurantId())))
-                .andReturn().getResponse().getContentAsString();
+        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.get("/api/address/getAddressByRestaurantId/" + KeyFactory.keyToString(restaurant.getRestaurantId()))).andReturn().getResponse()
+                .getContentAsString();
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertEquals(city, json.getJSONArray("data").getJSONObject(0).getString("city"));
 
@@ -126,6 +124,7 @@ public class ApiControllerTest extends BaseSpringTest {
     public void testUTF_8() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/test/utf-8")).andExpect(MockMvcResultMatchers.status().isOk());
     }
+
     @Test
     public void testUserLogin() throws Exception {
         Session session = new Session();
@@ -137,15 +136,14 @@ public class ApiControllerTest extends BaseSpringTest {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setUserName(userName);
         loginInfo.setPassword(password);
-        String jsonStr = mockMvc.perform(MockMvcRequestBuilders.post("/api/user/login").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
-                .content(JSONBinder.binder(LoginInfo.class).toJSON(loginInfo))
-                .contentType(MediaType.APPLICATION_JSON))
-                .andDo(MockMvcResultHandlers.print())
-                .andReturn().getResponse().getContentAsString();
+        String jsonStr = mockMvc
+                .perform(
+                        MockMvcRequestBuilders.post("/api/user/login").param("sessionId", KeyFactory.keyToString(session.getSessionId())).content(JSONBinder.binder(LoginInfo.class).toJSON(loginInfo))
+                                .contentType(MediaType.APPLICATION_JSON)).andDo(MockMvcResultHandlers.print()).andReturn().getResponse().getContentAsString();
         JSONObject json = new JSONObject(jsonStr);
         Assert.assertTrue(json.getBoolean("data"));
     }
-    
+
     @Test
     public void testSetOrder() throws Exception {
         Session session = new Session();
@@ -159,13 +157,11 @@ public class ApiControllerTest extends BaseSpringTest {
         order.setUserId(KeyFactory.keyToString(user.getUserId()));
         JSONBinder<Order> binder = JSONBinder.binder(Order.class);
         System.out.println(binder.fromJSON(binder.toJSON(order)));
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/order/setOrder").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
-                .content(JSONBinder.binder(Order.class).toJSON(order))
-                .contentType(MediaType.APPLICATION_JSON))
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/api/order/setOrder").param("sessionId", KeyFactory.keyToString(session.getSessionId())).content(JSONBinder.binder(Order.class).toJSON(order))
+                        .contentType(MediaType.APPLICATION_JSON)).andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status().isOk());
     }
-    
+
     @Test
     public void testSetPaymentInfo() throws Exception {
         Session session = new Session();
@@ -180,12 +176,11 @@ public class ApiControllerTest extends BaseSpringTest {
         orderDao.persist(order);
         PaymentInfo paymentInfo = new PaymentInfo();
         paymentInfo.setOrderId(KeyFactory.keyToString(order.getOrderId()));
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/paymentInfo/setPaymentInfo").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
-                .content(JSONBinder.binder(PaymentInfo.class).toJSON(paymentInfo))
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/api/paymentInfo/setPaymentInfo").param("sessionId", KeyFactory.keyToString(session.getSessionId()))
+                        .content(JSONBinder.binder(PaymentInfo.class).toJSON(paymentInfo)).contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
     }
- 
+
     @Test
     public void testCreateNewUser() throws Exception {
         Session session = new Session();
@@ -205,17 +200,17 @@ public class ApiControllerTest extends BaseSpringTest {
         JSONBinder<CreateNewUserRequest> binder = JSONBinder.binder(CreateNewUserRequest.class);
         System.out.println(binder.toJSON(request));
         System.out.println(binder.fromJSON(binder.toJSON(request)));
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/createNewUser")
-                .content(JSONBinder.binder(CreateNewUserRequest.class).toJSON(request))
-                .contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/createNewUser").content(JSONBinder.binder(CreateNewUserRequest.class).toJSON(request)).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-                
+
         session = pmf.getObjectById(Session.class, session.getSessionId());
         Assert.assertFalse(StringUtils.isEmpty(session.getUserId()));
         user = pmf.getObjectById(User.class, session.getUserId());
         Assert.assertEquals(userName, user.getUserName());
         Assert.assertEquals(city, user.getDeliveryAddresses().get(0).getCity());
-        
+
     }
+    
+   
 
 }
