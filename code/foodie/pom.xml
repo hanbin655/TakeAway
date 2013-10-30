@@ -102,7 +102,7 @@
         <dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-labs</artifactId>
-			<version>1.8.0</version>
+			<version>${appengine.target.version}</version>
 		</dependency>
                 
             
@@ -111,8 +111,8 @@
 		    <groupId>com.google.appengine.orm</groupId>
 		    <artifactId>datanucleus-appengine</artifactId>
 		    <version>2.1.2</version>
-		    <scope>runtime</scope>
 		 </dependency>
+            
 		 <!-- 
 		 <dependency>
 			  <groupId>com.google.appengine</groupId>

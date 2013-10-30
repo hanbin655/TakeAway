@@ -25,9 +25,10 @@ function localViewModel(){
         } else {
         	api.getHelloWorld(function(response){
         		console.log("Api retuns data");
-        	    if (response.isSuccess) {
+				console.log(response.success);
+        	    if (response.success) {
         	        console.log("Api retuns data with success");        
-        	        self.data(result.data);
+        	        self.data(response.data);
         	    } else {
         	        handleUnsuccess(response);
         	    }
@@ -39,6 +40,7 @@ function localViewModel(){
 
 //This function is used to handle unsuccess return from api, usual show an error message and redirect to other page
 function handleUnsuccess(result) {
+	console.log(result);
     console.log("api returns data with unsuccess");
 }
 

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta charset="UTF-8">
+
+<title>Title of the document</title>
+
+<link href="../content/css/test.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../script/jquery/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../script/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3/jquery-ui-1.10.3.min.js"></script>
+<script type="text/javascript" src="../script/knockout/knockout-2.3.0.js"></script>
+<script type="text/javascript" src="../script/common/formatHelper.js"></script>
+<script type="text/javascript" src="../script/common/apiProxy.js"></script>
+<script type="text/javascript" src="../script/common/init.js"></script>
+
+
+
+<!-- This is for individual page -->
+<script type="text/javascript" src="../script/pageScript/item_selection.js"></script>
+<!-- End-->
+
+</head>
+
+<body>
+<div id="page">
+<header>
+<img id="header_image" src="../content/image/order_food/header.jpg"/>
+</header>
+<div id = "content">
+	<div id="above">
+		<div id="rstrnt_info">
+			<table id="tbl_rstrnt_info">
+				<tr>
+					<td class="col1" rowspan="4"><img id="restaurant_logo" src="../content/image/order_food/placeholder_logo.png"/></td>
+					<td class="col2" id="rstrnt_name">外卖店名字</td>
+				</tr>
+				<tr>
+					<td id="rstrnt_addrss">外卖店地址123</td>
+				<tr/>
+				<tr>
+					<td id="rstrnt_stars">stars</td>
+				<tr/>
+				<tr>
+					<td>电话</td>
+					<td>12312</td>
+				</tr>
+				<tr>
+					<td>邮件</td>
+					<td>12312</td>
+				</tr>
+				<tr>
+					<td>开业时间</td>
+					<td>12312</td>
+				</tr>
+				
+		  </table>
+		</div><!-- end rstrnt_info-->
+		<div id="rcmmndtn_sec">
+			<img id="discnt_image" width="600px" height="130px" src="../content/image/order_food/discntDiv.jpg"/><br/>
+			<img id="discnt_image" width="600px"height="130px" src="../content/image/order_food/discntDiv.jpg"/>
+		</div><!-- end rcmmndtn_sec-->
+	</div><!-- end above-->
+	<div id="middle">
+		<div id="menu_info">
+			<table id="menu_table">
+				<thead>
+					<tr><th>图片</th><th>菜品</th><th>价格</th><th>添加</th></tr>
+				</thead>
+				<tbody data-bind="foreach: menuItems">
+					<tr>
+						<td><img src="../content/image/order_food/placeholder_logo.png"/></td>
+						<td data-bind="text: itemName"></td>
+						<td data-bind="text: itemPrice"></td>
+						<td class="sep_col">plus</td>
+					</tr>
+				</tbody>
+			
+				<script type="text/javascript" src="../script/pageScript/item_selection.js"></script>
+			</table>
+		</div><!-- end menu_info-->
+		<div id="order_info">
+			<table id="order_table">
+				<thead><tr><th class="tbl_head" colspan="5">您的订单</th></tr></thead>
+				<tbody>
+				<tr>
+					<td>某菜</td>
+					<td><img src="../content/image/order_food/X_logo.png" /></td>
+					<td>1</td>
+					<td><del>￥8</del></td>
+					<td>￥6</td>
+				</tr>
+				<tr>
+					<td>某菜</td>
+					<td><img src="../content/image/order_food/X_logo.png" /></td>
+					<td>1</td>
+					<td><del>￥8.00</del></td>
+					<td>￥6.00</td>
+				</tr>
+				</tbody>
+				<tfoot>
+				
+				<tr>
+					<td class="tbl_sub_total" colspan="5"></td>
+				</tr>
+				<tr>
+					<td  colspan="3"></td>
+					<td >总额：</td>
+					<td >￥12.00</td>
+				</tr>
+				</tfoot>
+			</table>
+		</div><!-- end order_info-->
+	</div><!-- end middle-->
+	<div id="comment">
+		<img id="comment_image" width="920px" height="300px" src="../content/image/order_food/commentsDiv.jpg"/>
+	</div>
+	<footer>
+	sdfsd
+	</footer>
+</div><!-- end content-->
+</div>
+</body>
+</html>
+
