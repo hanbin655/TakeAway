@@ -1,18 +1,19 @@
 package com.foodie.repository;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
 
 public class BaseDAO {
-    protected PersistenceManagerFactory pmf = PMF.get();
+    @Autowired
     protected PersistenceManager pm;
-    
+
     public void openPersistenceManager() {
-        pm =pmf.getPersistenceManager();
+//        pm =pmf.getPersistenceManager();
     }
-    
+
     public void closePersistenceManager() {
-        if (pm != null && !pm.isClosed()) pm.close();
+//        if (pm != null && !pm.isClosed()) pm.close();
     }
 
 }

@@ -1,17 +1,15 @@
 package com.foodie.repository;
 
+import junit.framework.Assert;
 import com.foodie.BaseTest;
 import com.foodie.model.Location;
 import com.foodie.model.Restaurant;
 import com.foodie.model.User;
 import com.foodie.model.session.Session;
 import com.google.appengine.api.datastore.KeyFactory;
-
 import org.junit.Test;
 
 import java.util.List;
-
-import junit.framework.Assert;
 
 public class AddressDAOTest extends BaseTest {
     private AddressDAO addressDAO = new AddressDAOImpl();

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.annotations.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +20,13 @@ import java.util.List;
 public class AddressDAOImpl implements AddressDAO {
 
     private PersistenceManagerFactory pmf;
-    public AddressDAOImpl(){
+
+    public AddressDAOImpl() {
         pmf = PMF.get();
     }
+
     @Override
+    @Transactional
     public void setAddress(Key sessionId, Location address) {
         PersistenceManager pm = pmf.getPersistenceManager();
         try {
