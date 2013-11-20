@@ -1,4 +1,32 @@
-body {
+
+html,
+body{
     font-family: Verdana, Helvetica, sans-serif;
-    background-color: #FFFFCC;
+    height: 100%;
+    /*background-color: #FFFFCC;*/
+}
+
+.nav-last-child
+{
+    margin-right:15px !important;
+}
+
+.round-corner
+{
+    border-radius: 5px;
+}
+
+.wrap
+{
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+      margin: 0 auto -60px;
+      /* Pad bottom by footer height */
+      padding: 0 0 120px;
+}
+
+footer
+{
+    height: 60px;
 }
