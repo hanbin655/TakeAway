@@ -1,126 +1,290 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Access-Control-Allow-Origin" content="*">
-<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="UTF-8">
 
-<title>Title of the document</title>
+    <title>Title of the document</title>
 
-<link href="../content/css/test.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="../script/jquery/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="../script/jquery/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3/jquery-ui-1.10.3.min.js"></script>
-<script type="text/javascript" src="../script/knockout/knockout-2.3.0.js"></script>
-<script type="text/javascript" src="../script/common/formatHelper.js"></script>
-<script type="text/javascript" src="../script/common/apiProxy.js"></script>
-<script type="text/javascript" src="../script/common/init.js"></script>
-
-
-
-<!-- This is for individual page -->
-<script type="text/javascript" src="../script/pageScript/item_selection.js"></script>
-<!-- End-->
-
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="../content/bootstrap/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="../content/css/main.css" />
+    <link type="text/css" rel="stylesheet" href="../content/css/jquery/jquery-ui.min.css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
 </head>
 
+
+
+
+
 <body>
-<div id="page">
-<header>
-<img id="header_image" src="../content/image/order_food/header.jpg"/>
-</header>
-<div id = "content">
-	<div id="above">
-		<div id="rstrnt_info">
-			<table id="tbl_rstrnt_info">
-				<tr>
-					<td class="col1" rowspan="4"><img id="restaurant_logo" src="../content/image/order_food/placeholder_logo.png"/></td>
-					<td class="col2" id="rstrnt_name">外卖店名字</td>
-				</tr>
-				<tr>
-					<td id="rstrnt_addrss">外卖店地址123</td>
-				<tr/>
-				<tr>
-					<td id="rstrnt_stars">stars</td>
-				<tr/>
-				<tr>
-					<td>电话</td>
-					<td>12312</td>
-				</tr>
-				<tr>
-					<td>邮件</td>
-					<td>12312</td>
-				</tr>
-				<tr>
-					<td>开业时间</td>
-					<td>12312</td>
-				</tr>
-				
-		  </table>
-		</div><!-- end rstrnt_info-->
-		<div id="rcmmndtn_sec">
-			<img id="discnt_image" width="600px" height="130px" src="../content/image/order_food/discntDiv.jpg"/><br/>
-			<img id="discnt_image" width="600px"height="130px" src="../content/image/order_food/discntDiv.jpg"/>
-		</div><!-- end rcmmndtn_sec-->
-	</div><!-- end above-->
-	<div id="middle">
-		<div id="menu_info">
-			<table id="menu_table">
-				<thead>
-					<tr><th>图片</th><th>菜品</th><th>价格</th><th>添加</th></tr>
-				</thead>
-				<tbody data-bind="foreach: menuItems">
-					<tr>
-						<td><img src="../content/image/order_food/placeholder_logo.png"/></td>
-						<td data-bind="text: itemName"></td>
-						<td data-bind="text: itemPrice"></td>
-						<td class="sep_col">plus</td>
-					</tr>
-				</tbody>
-			
-				<script type="text/javascript" src="../script/pageScript/item_selection.js"></script>
-			</table>
-		</div><!-- end menu_info-->
-		<div id="order_info">
-			<table id="order_table">
-				<thead><tr><th class="tbl_head" colspan="5">您的订单</th></tr></thead>
-				<tbody>
-				<tr>
-					<td>某菜</td>
-					<td><img src="../content/image/order_food/X_logo.png" /></td>
-					<td>1</td>
-					<td><del>￥8</del></td>
-					<td>￥6</td>
-				</tr>
-				<tr>
-					<td>某菜</td>
-					<td><img src="../content/image/order_food/X_logo.png" /></td>
-					<td>1</td>
-					<td><del>￥8.00</del></td>
-					<td>￥6.00</td>
-				</tr>
-				</tbody>
-				<tfoot>
-				
-				<tr>
-					<td class="tbl_sub_total" colspan="5"></td>
-				</tr>
-				<tr>
-					<td  colspan="3"></td>
-					<td >总额：</td>
-					<td >￥12.00</td>
-				</tr>
-				</tfoot>
-			</table>
-		</div><!-- end order_info-->
-	</div><!-- end middle-->
-	<div id="comment">
-		<img id="comment_image" width="920px" height="300px" src="../content/image/order_food/commentsDiv.jpg"/>
-	</div>
-	<footer>
-	sdfsd
-	</footer>
-</div><!-- end content-->
-</div>
+    <div class="wrap">
+    	<header>
+        	<div class="navbar-wrapper">
+                <div class="navbar navbar-static-top" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Foodie</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#">Login</a>
+                                </li>
+                                <li class="nav-last-child">
+                                    <a href="#">Register</a>
+                                </li>                                
+                            </ul>
+                        </div>
+                        <div class="row">                           
+                            <div class="col-md-offset-10 col-md-2">
+                               <span class="glyphicon glyphicon-earphone"></span><a>1234-45678-789</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      	    </div>
+    	</header>
+	    <div class="container">
+	        <div id="above" class="row">
+				<div id="rstrnt_info" class="col-md-4">
+					<table id="tbl_rstrnt_info" class="table">
+						<tr>
+							<td rowspan="2"><img id="restaurant_logo" src="../content/image/order_food/placeholder_logo.png"/></td>
+							<td><p id="rstrnt_name">外卖店名字</p></td>
+						</tr>
+						<tr>
+							<td><p id="rstrnt_stars">stars</p></td>
+						<tr/>
+						<tr>
+							<td colspan="2">
+								<address>
+								  东城区王府井大街东华金街购物中心五层（王府井书店正对面）<br>
+								</address>
+							</td>
+						<tr/>
+						
+						<tr>
+							<td>电话</td>
+							<td>12312</td>
+						</tr>
+						<tr>
+							<td>邮件</td>
+							<td>12312</td>
+						</tr>
+						<tr>
+							<td>开业时间</td>
+							<td>12312</td>
+						</tr>
+						
+				    </table>
+				</div><!-- end rstrnt_info-->
+				<div id="rcmmndtn_sec" class="col-md-8">
+						<div id="popular_dish" class="carousel slide"> <!-- data-ride="carousel" -->
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#popular_dish" data-slide-to="0" class="active"></li>
+								<li data-target="#popular_dish" data-slide-to="1"></li>
+								<li data-target="#popular_dish" data-slide-to="2"></li>
+							</ol>
+
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item active text-center">
+									<img alt="" src="../content/image/order_food/1.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/1.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/1.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/2.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/2.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/2.jpg" class="my_inline"/>
+								</div>
+							    <div class="item text-center">
+									<img alt="" src="../content/image/order_food/3.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/3.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/3.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/4.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/4.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/4.jpg" class="my_inline"/>
+								</div>
+								<div class="item text-center">
+									<img alt="" src="../content/image/order_food/5.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/5.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/5.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/6.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/6.jpg" class="my_inline"/>
+									<img alt="" src="../content/image/order_food/6.jpg" class="my_inline"/>
+								</div>
+							</div>
+
+							<!-- Controls -->
+							<a class="left carousel-control" href="#popular_dish" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+							</a>
+							<a class="right carousel-control" href="#popular_dish" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
+						</div>
+				</div><!-- end rcmmndtn_sec-->
+			</div><!-- end above-->
+			<div id="middle" class="row">
+					<div id="menu_info" class="col-md-7">
+						<table id="menu_table" class="table">
+							<thead>
+								<tr><th>图片</th><th>菜品</th><th>价格</th><th>添加</th></tr>
+							</thead>
+							<tbody data-bind="foreach: menuItems">
+								<tr>
+									<td><img src="../content/image/order_food/placeholder_logo.png"/></td>
+									<td data-bind="text: itemName"></td>
+									<td data-bind="text: itemPrice"></td>
+									<td>plus</td>
+								</tr>
+							</tbody>
+						
+						</table>
+					</div><!-- end menu_info-->
+					<div id="order_info" class="col-md-5">
+						<table id="order_table" class="table">
+							<thead><tr><th colspan="5">您的订单</th></tr></thead>
+							<tbody>
+							<tr>
+								<td>某菜</td>
+								<td><img src="../content/image/order_food/X_logo.png" /></td>
+								<td>1</td>
+								<td><del>￥8</del></td>
+								<td>￥6</td>
+							</tr>
+							<tr>
+								<td>某菜</td>
+								<td><img src="../content/image/order_food/X_logo.png" /></td>
+								<td>1</td>
+								<td><del>￥8.00</del></td>
+								<td>￥6.00</td>
+							</tr>
+							</tbody>
+							<tfoot>
+							
+							
+							<tr>
+								<td  colspan="3"></td>
+								<td >总额：</td>
+								<td >￥12.00</td>
+							</tr>
+							</tfoot>
+						</table>
+					</div><!-- end order_info-->
+				</div><!-- end middle-->
+				<div id="comment_section" class="row">
+				<div class="col-md-12">
+					<h2 id="rst_cmt_name">某某店的评论
+						<small>
+							<select>
+								<option>按时间</option>
+								<option>按评分</option>
+							</select>
+							<a href="#">写评论</a>
+						</small>
+					</h2>
+				</div>
+					<div class="row jumbotron">
+					<div id="comment_area" class="col-md-8">
+						<ul class="list-inline">
+							<li><p id="comment_made_time">2013-01-01 13:00</p></li>
+							<li>by</li>
+							<li><small id="comment_maker_name">呆呆的stone</small></li>
+						</ul>
+
+						<dl class="dl-horizontal">
+							<dt id="comment_title">真好吃</dt>
+							<dd id="comment_detail" class="text-info">太好吃了，以后一定常来</dd>
+						</dl>
+					</div>
+					<div id="customer_rating" class="col-md-4">
+						<table class="table table-bordered">
+							<tr>
+								<td>味道</td>
+								<td>3</td>
+								<td rowspan="3">3</td>
+							</tr>
+							<tr>
+								<td>分量</td>
+								<td>3</td>
+							</tr>
+							<tr>
+								<td>速度</td>
+								<td>3</td>
+							</tr>
+						</table>
+					</div>
+					</div>
+					<div class="row jumbotron">
+					<div id="comment_area" class="col-md-8">
+						<ul class="list-inline">
+							<li><p id="comment_made_time">2013-01-01 13:00</p></li>
+							<li>by</li>
+							<li><small id="comment_maker_name">呆呆的stone</small></li>
+						</ul>
+
+						<dl class="dl-horizontal">
+							<dt id="comment_title">真心不好吃</dt>
+							<dd id="comment_detail" class="text-info">做的跟老大做的似的，以后再也不来吃饭了。说话有点怀念在爱尔兰的生活了</dd>
+						</dl>
+					</div>
+					<div id="customer_rating" class="col-md-4">
+						<table class="table-bordered table">
+							<tr>
+								<td>味道</td>
+								<td>3</td>
+								<td rowspan="3">3</td>
+							</tr>
+							<tr>
+								<td>分量</td>
+								<td>3</td>
+							</tr>
+							<tr>
+								<td>速度</td>
+								<td>3</td>
+							</tr>
+						</table>
+					</div>
+					</div>
+				</div>
+
+	    </div>
+    </div>
+    <footer id="footer" class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>        
+        <p><span class="glyphicon glyphicon-copyright-mark"></span> 2013 Company, Inc <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </footer>
+
+
+
+    <script type="text/javascript" src="../script/jquery/jquery-2.0.3.min.js"></script>
+    <script src="../content/bootstrap/js/bootstrap.js"></script>
+    <!--s
+    <script type="text/javascript" src="../script/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3.min.js"></script>
+
+    <script type="text/javascript" src="../script/knockout/knockout-2.3.0.js"></script>
+    <script type="text/javascript" src="../script/common/formatHelper.js"></script>
+    <script type="text/javascript" src="../script/common/apiProxy.js"></script>
+    <script type="text/javascript" src="../script/common/init.js"></script>
+     This is for individual page
+    <script type="text/javascript" src="../script/pageScript/item_selection.js"></script>  -->
+
+
+    <!-- End-->
 </body>
 </html>
 
