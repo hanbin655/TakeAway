@@ -5,6 +5,7 @@ import com.google.appengine.api.datastore.Key;
 import org.springframework.stereotype.Repository;
 
 import javax.jdo.Query;
+import javax.jdo.annotations.Transactional;
 import java.util.List;
 
 @Repository
@@ -16,7 +17,10 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
         Query query = pm.newQuery(User.class);
         query.setFilter("userName == userNameParam");
         query.declareParameters("String userNameParam");
-        return ((List<User>) query.execute(userName)).get(0);
+        List<User> userList = ((List<User>) query.execute(userName));
+        System.out.println("userList.size()" + userList.size());
+        if (userList.isEmpty()) return null;
+        return userList.get(0);
     }
 
     @Override
@@ -25,6 +29,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
     }
 
     @Override
+    @Transactional
     public void persist(User user) {
         pm.makePersistent(user);
     }

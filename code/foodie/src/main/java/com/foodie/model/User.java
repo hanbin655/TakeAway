@@ -1,14 +1,13 @@
 package com.foodie.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.appengine.api.datastore.Key;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-
-import com.google.appengine.api.datastore.Key;
+import java.util.ArrayList;
+import java.util.List;
 
 @PersistenceCapable
 public class User {
@@ -37,6 +36,11 @@ public class User {
 
     @Persistent
     private List<Location> deliveryAddresses = new ArrayList<Location>();
+
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
     public User(String userName, String password, String email, String phoneNO, String name) {
         this.userName = userName;
