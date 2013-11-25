@@ -1,6 +1,7 @@
 var viewModel = null;
 
 $(function(){
+	loadHeaderFooter();
 	console.log("Loading page scripts");
 	if(typeof renderPage == 'function')
 	{
@@ -10,5 +11,11 @@ $(function(){
 	}else {
 		console.log("Can't find page rendering function");
 	}
+	
 });
 
+
+function loadHeaderFooter(){	
+	$('header').load("header.html");
+	$('footer').load("footer.html");
+}
