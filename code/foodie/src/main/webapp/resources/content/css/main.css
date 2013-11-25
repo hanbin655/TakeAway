@@ -25,7 +25,10 @@ body{
       /* Pad bottom by footer height */
       padding: 0 0 120px;
 }
-
+.carousel-inner > .item > img.my_inline, .carousel-inner > .item > a > img.my_inline
+{
+    display: inline;
+}
 footer
 {
     height: 60px;

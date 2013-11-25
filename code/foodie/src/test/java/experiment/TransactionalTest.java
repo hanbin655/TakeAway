@@ -38,6 +38,18 @@ public class TransactionalTest extends BaseSpringTest {
         System.out.println(locations.size());
         Assert.assertTrue(locations.isEmpty());
     }
+    @Test
+    public void testNotRollBack() {
+        try {
+            rollBackForTestDAO.shouldNotRollBack();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<Location> locations = (List<Location>) pmf.newQuery("select from " + Location.class.getName()).execute();
+
+        System.out.println(locations.size());
+        Assert.assertTrue(locations.size() == 1);
+    }
 
 
 }

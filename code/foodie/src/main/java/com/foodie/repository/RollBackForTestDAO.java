@@ -20,6 +20,16 @@ public class RollBackForTestDAO extends BaseDAO {
         loc2.setCity("Xiamen");
         pm.makePersistent(loc2);
     }
+    public void shouldNotRollBack() {
+
+        Location loc = new Location();
+        loc.setCity("Quanzhou");
+        pm.makePersistent(loc);
+        throwException();
+        Location loc2 = new Location();
+        loc2.setCity("Xiamen");
+        pm.makePersistent(loc2);
+    }
 
     public void throwException() {
         throw new RuntimeException();
