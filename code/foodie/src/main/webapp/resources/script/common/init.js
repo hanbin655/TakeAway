@@ -15,7 +15,15 @@ $(function(){
 });
 
 
-function loadHeaderFooter(){	
-	$('header').load("header.html");
-	$('footer').load("footer.html");
+function loadHeaderFooter(){
+	$('body').hide();
+	$('header').load("header.html",function(){
+		$('footer').load("footer.html",function(){
+			$('body').show({
+				effect: 'fade',
+				duration: 500
+			});
+		});
+	});
+	
 }
