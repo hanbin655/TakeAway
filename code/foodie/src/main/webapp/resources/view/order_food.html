@@ -33,30 +33,28 @@
 					<table id="tbl_rstrnt_info" class="table">
 						<tr>
 							<td rowspan="2"><img id="restaurant_logo" src="../content/image/order_food/placeholder_logo.png"/></td>
-							<td><p id="rstrnt_name">外卖店名字</p></td>
+							<td><p id="rstrnt_name" data-bind="text: restaurantInfo.name"></p></td>
 						</tr>
 						<tr>
-							<td><p id="rstrnt_stars">stars</p></td>
+							<td><p id="rstrnt_score" data-bind="text: restaurantInfo.score"></p></td>
 						<tr/>
 						<tr>
 							<td colspan="2">
-								<address>
-								  东城区王府井大街东华金街购物中心五层（王府井书店正对面）<br>
-								</address>
+								<address id="rstrnt_addrss" data-bind="text: restaurantLocation"></address>
 							</td>
 						<tr/>
 						
 						<tr>
 							<td>电话</td>
-							<td>12312</td>
+							<td><p id="rstrnt_telNum" data-bind="text: restaurantInfo.telNum"></td>
 						</tr>
 						<tr>
 							<td>邮件</td>
-							<td>12312</td>
+							<td><p id="rstrnt_email" data-bind="text: restaurantInfo.email"></td>
 						</tr>
 						<tr>
 							<td>开业时间</td>
-							<td>12312</td>
+							<td><p id="rstrnt_businessHour" data-bind="text: restaurantInfo.businessHour"></td>
 						</tr>
 						
 				    </table>
@@ -244,18 +242,14 @@
     <script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3.min.js"></script>
     <script src="../content/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="../script/common/init.js"></script>
-    <!--s
     
 
     <script type="text/javascript" src="../script/knockout/knockout-2.3.0.js"></script>
     <script type="text/javascript" src="../script/common/formatHelper.js"></script>
     <script type="text/javascript" src="../script/common/apiProxy.js"></script>
    
-     This is for individual page
-    <script type="text/javascript" src="../script/pageScript/item_selection.js"></script>  -->
+    <script type="text/javascript" src="../script/pageScript/item_selection.js"></script>
 
-
-    <!-- End-->
 </body>
 </html>
 
