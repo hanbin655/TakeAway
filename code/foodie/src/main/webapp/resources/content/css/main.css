@@ -29,6 +29,12 @@ body{
 {
     display: inline;
 }
+#average_score
+{
+  font-size: 45px;
+  text-align: center;
+  vertical-align: middle;
+}
 footer
 {
     height: 60px;

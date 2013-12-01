@@ -11,6 +11,9 @@
     <link type="text/css" rel="stylesheet" href="../content/bootstrap/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="../content/css/main.css" />
     <link type="text/css" rel="stylesheet" href="../content/css/jquery/jquery-ui.min.css" />
+	<link type="text/css" rel="stylesheet" href="../content/css/jquery/jquery.rating.css" />
+    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,7 +39,19 @@
 							<td><p id="rstrnt_name" data-bind="text: restaurantInfo.name"></p></td>
 						</tr>
 						<tr>
-							<td><p id="rstrnt_score" data-bind="text: restaurantInfo.score"></p></td>
+							<td data-bind="starRating: restaurantInfo.score">
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="0.5"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="1.0"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="1.5"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="2.0"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="2.5"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="3.0"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="3.5"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="4.0"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="4.5"/>
+								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="5.0"/>
+								<p id="rstrnt_score" data-bind="text: restaurantInfo.score"></p>
+							</td>
 						<tr/>
 						<tr>
 							<td colspan="2">
@@ -127,107 +142,114 @@
 						<table id="order_table" class="table">
 							<thead><tr><th colspan="5">您的订单</th></tr></thead>
 							<tbody>
-							<tr>
-								<td>某菜</td>
-								<td><img src="../content/image/order_food/X_logo.png" /></td>
-								<td>1</td>
-								<td><del>￥8</del></td>
-								<td>￥6</td>
-							</tr>
-							<tr>
-								<td>某菜</td>
-								<td><img src="../content/image/order_food/X_logo.png" /></td>
-								<td>1</td>
-								<td><del>￥8.00</del></td>
-								<td>￥6.00</td>
-							</tr>
+								<tr>
+									<td>某菜</td>
+									<td><img src="../content/image/order_food/X_logo.png" /></td>
+									<td>1</td>
+									<td><del>￥8</del></td>
+									<td>￥6</td>
+								</tr>
+								<tr>
+									<td>某菜</td>
+									<td><img src="../content/image/order_food/X_logo.png" /></td>
+									<td>1</td>
+									<td><del>￥8.00</del></td>
+									<td>￥6.00</td>
+								</tr>
 							</tbody>
 							<tfoot>
-							
-							
-							<tr>
-								<td  colspan="3"></td>
-								<td >总额：</td>
-								<td >￥12.00</td>
-							</tr>
+								<tr>
+									<td  colspan="3"></td>
+									<td >总额：</td>
+									<td >￥12.00</td>
+								</tr>
 							</tfoot>
 						</table>
 					</div><!-- end order_info-->
 				</div><!-- end middle-->
 				<div id="comment_section" class="row">
-				<div class="col-md-12">
-					<h2 id="rst_cmt_name">某某店的评论
-						<small>
-							<select>
-								<option>按时间</option>
-								<option>按评分</option>
-							</select>
-							<a href="#">写评论</a>
-						</small>
-					</h2>
-				</div>
+					<div id="comment_section_header" class="row">
+						<div class="col-md-5">
+							<h2 data-bind="text: restaurantInfo.name + '的评论'"></h2>
+						</div>
+						<div class="col-md-7">
+							<h2>
+								<small>
+									<select>
+										<option>按时间</option>
+										<option>按评分</option>
+									</select>
+									<a href="#">写评论</a>
+								</small>
+							</h2>
+						</div>
+					</div>
+					<div data-bind="foreach: commentData">
 					<div class="row jumbotron">
-					<div id="comment_area" class="col-md-8">
-						<ul class="list-inline">
-							<li><p id="comment_made_time">2013-01-01 13:00</p></li>
-							<li>by</li>
-							<li><small id="comment_maker_name">呆呆的stone</small></li>
-						</ul>
+						<div id="comment_area" class="col-md-8" >
+							<ul class="list-inline">
+								<li><p data-bind="text: comment_made_time"></p></li>
+								<li>by</li>
+								<li><small data-bind="text: comment_maker_name"></small></li>
+							</ul>
 
-						<dl class="dl-horizontal">
-							<dt id="comment_title">真好吃</dt>
-							<dd id="comment_detail" class="text-info">太好吃了，以后一定常来</dd>
-						</dl>
+							<dl class="dl-horizontal">
+								<dt data-bind="text: comment_title"></dt>
+								<dd data-bind="text: comment_detail" class="text-info"></dd>
+							</dl>
+						</div>
+						<div id="customer_rating" class="col-md-4">
+							<table class="table table-bordered">
+					 			<tr>
+									<td>味道</td>
+									<td data-bind="starRating: flavor_score">
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="0.5"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.0"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.5"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.0"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.5"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.0"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.5"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.0"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.5"/>
+										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="5.0"/>
+									</td>
+									<td rowspan="3" id="average_score"><p data-bind="text: average_score"></p></td>
+								</tr>
+								<tr>
+									<td>分量</td>
+									<td data-bind="starRating: quantity_score">
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="0.5"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.0"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.5"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.0"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.5"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.0"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.5"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.0"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.5"/>
+										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="5.0"/>
+									</td>
+								</tr>
+								<tr>
+									<td>速度</td>
+									<td data-bind="starRating: timing_score">
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="0.5"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.0"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.5"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.0"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.5"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.0"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.5"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.0"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.5"/>
+										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="5.0"/>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
-					<div id="customer_rating" class="col-md-4">
-						<table class="table table-bordered">
-							<tr>
-								<td>味道</td>
-								<td>3</td>
-								<td rowspan="3">3</td>
-							</tr>
-							<tr>
-								<td>分量</td>
-								<td>3</td>
-							</tr>
-							<tr>
-								<td>速度</td>
-								<td>3</td>
-							</tr>
-						</table>
-					</div>
-					</div>
-					<div class="row jumbotron">
-					<div id="comment_area" class="col-md-8">
-						<ul class="list-inline">
-							<li><p id="comment_made_time">2013-01-01 13:00</p></li>
-							<li>by</li>
-							<li><small id="comment_maker_name">呆呆的stone</small></li>
-						</ul>
-
-						<dl class="dl-horizontal">
-							<dt id="comment_title">真心不好吃</dt>
-							<dd id="comment_detail" class="text-info">做的跟老大做的似的，以后再也不来吃饭了。说话有点怀念在爱尔兰的生活了</dd>
-						</dl>
-					</div>
-					<div id="customer_rating" class="col-md-4">
-						<table class="table-bordered table">
-							<tr>
-								<td>味道</td>
-								<td>3</td>
-								<td rowspan="3">3</td>
-							</tr>
-							<tr>
-								<td>分量</td>
-								<td>3</td>
-							</tr>
-							<tr>
-								<td>速度</td>
-								<td>3</td>
-							</tr>
-						</table>
-					</div>
-					</div>
+				<!--	</div> -->
 				</div>
 
 	    </div>
@@ -238,8 +260,10 @@
 
 
     <script type="text/javascript" src="../script/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../script/jquery/jquery.rating.pack.js"></script>
     <script type="text/javascript" src="../script/jquery/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3.min.js"></script>
+    <script type="text/javascript" src="../script/jquery/jquery.MetaData.js"></script>
     <script src="../content/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="../script/common/init.js"></script>
     
