@@ -6,31 +6,32 @@ import java.util.List;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.datanucleus.annotations.Unowned;
 
 @PersistenceCapable
 public class Order {
 
-	public final int STATE_PENDING = 1;
-	public final int STATE_COOKING = 2;
-	public final int STATE_DELIVERING = 3;
-	public final int STATE_FINISH = 0;
+	public static final int STATE_PENDING = 1;
+	public static int STATE_COOKING = 2;
+	public static final int STATE_DELIVERING = 3;
+	public static final int STATE_FINISH = 0;
 	
+    @PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key orderId;
 
 	@Persistent
-	private Key userId;
+	private String userId;
 	
 	@Persistent
 	@Unowned
 	private Location location;
 	
 	@Persistent
-	private Key restaurantId;
+	private String restaurantId;
 	
 	@Persistent
 	private Date dateTime;
@@ -44,29 +45,17 @@ public class Order {
 	@Persistent
 	private int state;
 	
-	public String getOrderId() {
-		return KeyFactory.keyToString(orderId);
+	public Key getOrderId() {
+		return orderId;
 	}
 	public void setOrderId(Key orderId) {
 		this.orderId = orderId;
-	}
-	public Key getUserId() {
-		return userId;
-	}
-	public void setUserId(Key userId) {
-		this.userId = userId;
 	}
 	public Location getLocation() {
 		return location;
 	}
 	public void setLocation(Location location) {
 		this.location = location;
-	}
-	public Key getRestaurantId() {
-		return restaurantId;
-	}
-	public void setRestaurantId(Key restaurantId) {
-		this.restaurantId = restaurantId;
 	}
 	public Date getDateTime() {
 		return dateTime;
@@ -86,6 +75,24 @@ public class Order {
 	public void setState(int state) {
 		this.state = state;
 	}
+    public static int getStateCooking() {
+        return STATE_COOKING;
+    }
+    public static void setStateCooking(int stateCooking) {
+        STATE_COOKING = stateCooking;
+    }
+    public String getUserId() {
+        return userId;
+    }
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    public String getRestaurantId() {
+        return restaurantId;
+    }
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
+    }
 	
 	
 }

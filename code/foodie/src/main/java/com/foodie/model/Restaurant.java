@@ -16,18 +16,17 @@ import com.google.appengine.api.datastore.KeyFactory;
 @PersistenceCapable
 public class Restaurant {
 
-	
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key restaurantId;
-	
-	@Persistent
-	private String name;
-	
-	@Persistent
-	private String description;
-	
-	@Persistent
+    @PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private Key restaurantId;
+
+    @Persistent
+    private String name;
+
+    @Persistent
+    private String description;
+
+    @Persistent
 	private BusinessHour businessHour;
 	
 	@Persistent
@@ -51,8 +50,8 @@ public class Restaurant {
 		this.location = location;
 	}
 	
-	public String getRestaurantId() {
-		return KeyFactory.keyToString(restaurantId);
+	public Key getRestaurantId() {
+		return restaurantId;
 	}
 
 	public void setRestaurantId(Key restaurantId) {

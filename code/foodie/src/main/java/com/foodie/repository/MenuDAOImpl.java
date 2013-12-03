@@ -5,7 +5,6 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 
-import org.datanucleus.FetchGroup;
 import org.springframework.stereotype.Repository;
 
 import com.foodie.model.Menu;
@@ -54,7 +53,6 @@ public class MenuDAOImpl implements MenuDAO {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		try{
 			pm.makePersistent(menu);
-			
 		}finally{
 			pm.close();
 		}

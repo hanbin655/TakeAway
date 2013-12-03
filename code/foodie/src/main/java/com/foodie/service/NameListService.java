@@ -20,8 +20,8 @@ public class NameListService extends AbstractService {
 		List<People> result = pdao.getAllPeople();
 		if(result.isEmpty())
 		{
-			this.ThrowException(new NullPointerException(
-					ApplicationHelper.NullPointerExceptionMssg));
+			this.throwException(new NullPointerException(
+					ApplicationHelper.NULL_POINTER_EXCEPTION_MSG));
 		}
 		return result;
 	}

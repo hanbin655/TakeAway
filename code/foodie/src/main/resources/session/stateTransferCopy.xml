@@ -1,0 +1,60 @@
+<states>
+	<state>
+		<name>OrderSpecified</name>
+		<api-list>
+			<api>
+				<url>setAddressById</url>
+				<condition>
+					<statement>isLogin</statement>
+					<statement>isValidAddressId</statement>
+				</condition>
+				<end-state>
+					<true>AddressSpecified</true>
+					<false>OrderSpecified</false>
+				</end-state>
+			</api>
+			<api>
+				<url>setAddress</url>
+				<condition>
+					<statement>isLogin</statement>
+					<statement>isValidAddress</statement>
+				</condition>
+				<end-state>
+					<true>AddressSpecified</true>
+					<false>OrderSpecified</false>
+				</end-state>
+			</api>
+			<api>
+				<url>createNewUser</url>
+				<condition>
+					<or>
+						<and>
+							<not>
+								<statement>isLogin</statement>
+							</not>
+							<statement>isValidAddress</statement>
+						</and>
+						<statement>isLogin</statement>
+					</or>
+				</condition>
+				<end-state>
+					<true>AddressSpecified</true>
+					<false>OrderSpecified</false>
+				</end-state>
+			</api>
+			<api>
+				<url>createNewUser</url>
+				<condition>
+					<statement id="1">isLogin</statement>
+					<statement id="2">isValidAddress</statement>
+				</condition>
+				<end-state>
+				        <default>OrderSpecified</default>
+				        <states>
+				        	<state rule="1 AND 2">AddressSpecified</state>
+				        </states>
+				</end-state>
+			</api>
+		</api-list>
+	</state>
+</states>
