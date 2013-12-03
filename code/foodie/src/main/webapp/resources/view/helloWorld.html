@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Hello world</title>
+
+
+<link type="text/css" rel="stylesheet" href="../script/jquery/jquery-ui-1.10.3/themes/jquery-ui.min.css"/>
+<script type="text/javascript" src="../script/jquery/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../script/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3/jquery-ui-1.10.3.min.js"></script>
+<script type="text/javascript" src="../script/knockout/knockout-2.3.0.js"></script>
+<script type="text/javascript" src="../script/common/formatHelper.js"></script>
+<script type="text/javascript" src="../script/common/apiProxy.js"></script>
+<script type="text/javascript" src="../script/common/init.js"></script>
+
+
+
+<script type="text/javascript" src="../script/pageScript/helloWorld.js"></script>
+
+
+</head>
+<body>
+
+<div>
+    <button data-bind="click: getList"><span data-bind="text: buttonText" ></span></button>
+
+    <div data-bind="fadeInOut: showData, foreach: data, accordion: {}">
+       
+           <h3>
+           <span data-bind="text: forename"></span>
+           <span data-bind="text: surname"></span>
+           </h3>
+        <div></div>
+       
+    </div>
+
+</div>
+</body>
+</html>

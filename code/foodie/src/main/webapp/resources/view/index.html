@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta charset="UTF-8">
+
+<title>Title of the document</title>
+
+<link type="text/css" rel="stylesheet" href="../script/jquery/jquery-ui-1.10.3/themes/jquery-ui.min.css"/>
+<script type="text/javascript" src="../script/jquery/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../script/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3/jquery-ui-1.10.3.min.js"></script>
+<script type="text/javascript" src="../script/knockout/knockout-2.3.0.js"></script>
+<script type="text/javascript" src="../script/common/formatHelper.js"></script>
+<script type="text/javascript" src="../script/common/apiProxy.js"></script>
+<script type="text/javascript" src="../script/common/init.js"></script>
+	<!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="../content/bootstrap/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="../content/css/main.css" />
+    <link type="text/css" rel="stylesheet" href="../content/css/jquery/jquery-ui.min.css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+
+<!-- This is for individual page -->
+<script type="text/javascript" src="../script/pageScript/index.js"></script>
+<!-- End-->
+
+</head>
+
+<body>
+	<div class="wrap">
+	<header></header>
+	<div class="container">
+		<h2 id="moduleTitle">为您推荐</h2>
+		<div id="moduleRecommend" class ="row" style="border-style: solid;">
+			<div class="col-md-3">
+				<table class="table-bordered">
+				<tr><td colspan="10">小石头餐馆</td></tr>
+				<tr><td colspan="10"><textarea rows="4" readonly>主营新疆拌面，大盘鸡，物美价廉，食材新鲜</textarea></td></tr>
+				<tr>
+					<td><a href="#" style="text-decoration:underline;">伊斯兰</a></td>
+					<td><a href="#" style="text-decoration:underline;">鸡肉</a></td>
+					<td><a href="#" style="text-decoration:underline;">实惠</a></td>
+				</tr>
+				</table>
+			</div>
+			<div class="col-md-3">
+				<table class="table-bordered">
+				<tr><td colspan="10">小石头餐馆</td></tr>
+				<tr><td colspan="10"><textarea rows="4" readonly>主营新疆拌面，大盘鸡，物美价廉，食材新鲜</textarea></td></tr>
+				<tr>
+					<td><a href="#" style="text-decoration:underline;">伊斯兰</a></td>
+					<td><a href="#" style="text-decoration:underline;">鸡肉</a></td>
+					<td><a href="#" style="text-decoration:underline;">实惠</a></td>
+				</tr>
+				</table>
+			</div>
+			<div class="col-md-3">
+				<table class="table-bordered">
+				<tr><td colspan="10">小石头餐馆</td></tr>
+				<tr><td colspan="10"><textarea rows="4" readonly>主营新疆拌面，大盘鸡，物美价廉，食材新鲜</textarea></td></tr>
+				<tr>
+					<td><a href="#" style="text-decoration:underline;">伊斯兰</a></td>
+					<td><a href="#" style="text-decoration:underline;">鸡肉</a></td>
+					<td><a href="#" style="text-decoration:underline;">实惠</a></td>
+				</tr>
+				</table>
+			</div>
+			<div class="col-md-3">
+				<table class="table-bordered">
+				<tr><td colspan="10">小石头餐馆</td></tr>
+				<tr><td colspan="10"><textarea rows="4" readonly>主营新疆拌面，大盘鸡，物美价廉，食材新鲜</textarea></td></tr>
+				<tr>
+					<td><a href="#" style="text-decoration:underline;">伊斯兰</a></td>
+					<td><a href="#" style="text-decoration:underline;">鸡肉</a></td>
+					<td><a href="#" style="text-decoration:underline;">实惠</a></td>
+				</tr>
+				</table>
+			</div>
+		</div>
+		<div><h2>自行搜索</h2></div>
+		<div id="searchModule" style="border-style: solid;" class="row">
+			<div id="search bar">
+				<form class="form-inline col-md-12" role="form">
+				  <div class="form-group">
+					<label class="form-group" for="searchFilter1">搜索条件1</label>
+				  </div>
+				  <div class="form-group">
+					<input type="search" class="form-control" id="searchFilter1" placeholder="Enter searchFilter1">
+				  </div>
+				  <div class="form-group">
+					<label class="form-group" for="searchFilter2">搜索条件2</label>
+				  </div>
+				  <div class="form-group">
+					<input type="search" class="form-control" id="searchFilter2" placeholder="Enter searchFilter1">
+				  </div>
+				  <div class="form-group">
+					<label class="form-group" for="searchFilter3">搜索条件3</label>
+				  </div>
+				  <div class="form-group">
+					<input type="search" class="form-control" id="searchFilter3" placeholder="Enter searchFilter1">
+				  </div>
+				  <button type="submit" class="btn btn-default">search</button>
+				</form>
+			</div>
+			<div class = "col-md-2" id="category navi bar">
+				<ul class="nav bs-sidenav">
+				<li><a href="#">所有类别</a></li>
+				<li><a href="#">粤菜</a></li>
+				<li><a href="#">川菜</a></li>
+				<li><a href="#">闽菜</a></li>
+				<li><a href="#">东北菜</a></li>
+				</ul>
+			</div>
+			<div class="col-md-10" id="search result">
+				<div class="row" style="height:200px;">
+					<div class="col-md-3">
+						<img alt="" src="../content/image/index/demo.png" />
+					</div>
+					<div id="restaurantDesccription" class="col-md-3">
+						<strong>某某餐馆</strong>
+						<textarea rows="4" readonly>主营新疆拌面，大盘鸡，物美价廉，食材新鲜</textarea>
+					</div>
+					<div id="tag" class="col-md-2">
+						<div><a class="col-md-12" href="#">标签1</a></div>
+						<div><a class="col-md-12" href="#">标签2</a></div>
+						<div><a class="col-md-12" href="#">标签3</a></div>
+					</div>
+					<div id="property" class="col-md-2">
+						<p>时间:9:00~18:00</p>
+						<p>回族菜</p>
+						<p>可外卖</p>
+					</div>
+					<div id="toShopPageLink" class="col-md-2">
+						<button type="button" class="btn btn-primary">go to this shop</button>
+					</div>
+				</div>
+				<div class="row" style="height:200px;">
+					<div class="col-md-3">
+						<img alt="" src="../content/image/index/demo.png" />
+					</div>
+					<div id="restaurantDesccription" class="col-md-3">
+						<strong>某某餐馆</strong>
+						<textarea rows="4" readonly>主营新疆拌面，大盘鸡，物美价廉，食材新鲜</textarea>
+					</div>
+					<div id="tag" class="col-md-2">
+						<div><a class="col-md-12" href="#">标签1</a></div>
+						<div><a class="col-md-12" href="#">标签2</a></div>
+						<div><a class="col-md-12" href="#">标签3</a></div>
+					</div>
+					<div id="property" class="col-md-2">
+						<p>时间:9:00~18:00</p>
+						<p>回族菜</p>
+						<p>可外卖</p>
+					</div>
+					<div id="toShopPageLink" class="col-md-2">
+						<button type="button" class="btn btn-primary">go to this shop</button>
+					</div>
+				</div>
+				<div class="row" style="height:200px;">
+					<div class="col-md-3">
+						<img alt="" src="../content/image/index/demo.png" />
+					</div>
+					<div id="restaurantDesccription" class="col-md-3">
+						<strong>某某餐馆</strong>
+						<textarea rows="4" readonly>主营新疆拌面，大盘鸡，物美价廉，食材新鲜</textarea>
+					</div>
+					<div id="tag" class="col-md-2">
+						<div><a class="col-md-12" href="#">标签1</a></div>
+						<div><a class="col-md-12" href="#">标签2</a></div>
+						<div><a class="col-md-12" href="#">标签3</a></div>
+					</div>
+					<div id="property" class="col-md-2">
+						<p>时间:9:00~18:00</p>
+						<p>回族菜</p>
+						<p>可外卖</p>
+					</div>
+					<div id="toShopPageLink" class="col-md-2">
+						<button type="button" class="btn btn-primary">go to this shop</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="../script/jquery/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="../script/jquery/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="../script/jquery/jquery-ui-1.10.3.min.js"></script>
+	<script src="../content/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../script/common/init.js"></script>
+	</div>
+	<footer id="footer" class="container"></footer>
+</body>
+</html>
+

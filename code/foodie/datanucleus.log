@@ -1,0 +1,188 @@
+17:04:05,461 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+17:04:05,668 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\John\Documents\GitHub\TakeAway\code\foodie\target\classes\com\foodie\model\People.class" with enhanced definition
+17:04:05,669 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+17:04:05,670 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=148 ms, enhance=54 ms, total=202 ms. Consult the log for full details
+17:35:27,889 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+17:35:28,100 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\John\Documents\GitHub\TakeAway\code\foodie\target\classes\com\foodie\model\People.class" with enhanced definition
+17:35:28,101 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+17:35:28,101 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=150 ms, enhance=56 ms, total=206 ms. Consult the log for full details
+17:49:27,545 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+17:49:27,752 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\John\Documents\GitHub\TakeAway\code\foodie\target\classes\com\foodie\model\People.class" with enhanced definition
+17:49:27,753 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+17:49:27,753 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=151 ms, enhance=50 ms, total=201 ms. Consult the log for full details
+17:56:30,659 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+17:56:30,850 (main) INFO  [DataNucleus.Enhancer] - Class "com.foodie.model.People" is already enhanced.
+17:56:30,850 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+17:56:30,851 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=158 ms, enhance=27 ms, total=185 ms. Consult the log for full details
+18:21:51,068 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+18:21:51,284 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\John\Documents\GitHub\TakeAway\code\foodie\target\classes\com\foodie\model\People.class" with enhanced definition
+18:21:51,285 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+18:21:51,286 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=154 ms, enhance=56 ms, total=210 ms. Consult the log for full details
+18:25:18,152 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+18:25:18,337 (main) INFO  [DataNucleus.Enhancer] - Class "com.foodie.model.People" is already enhanced.
+18:25:18,338 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+18:25:18,338 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=153 ms, enhance=27 ms, total=180 ms. Consult the log for full details
+23:30:01,230 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+23:30:01,436 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\John\Documents\GitHub\TakeAway\code\foodie\target\classes\com\foodie\model\People.class" with enhanced definition
+23:30:01,437 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+23:30:01,438 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=150 ms, enhance=50 ms, total=200 ms. Consult the log for full details
+23:30:32,218 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"
+23:30:32,408 (main) INFO  [DataNucleus.Enhancer] - Class "com.foodie.model.People" is already enhanced.
+23:30:32,408 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (PersistenceCapable) : com.foodie.model.People
+23:30:32,408 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=158 ms, enhance=27 ms, total=185 ms. Consult the log for full details
+23:33:45,568 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:33:45,710 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:33:45,712 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:33:45,712 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:33:45,712 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:33:45,712 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:33:45,712 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:33:45,752 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:33:45,752 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:33:45,754 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:33:45,903 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:33:45,913 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:33:45,914 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:33:45,915 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+23:35:06,882 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:35:07,041 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:35:07,042 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:35:07,043 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:35:07,043 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:35:07,043 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:35:07,043 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:35:07,084 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:35:07,085 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:35:07,086 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:35:07,176 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:35:07,189 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:35:07,191 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:35:07,192 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+23:38:45,316 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:38:45,462 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:38:45,464 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:38:45,464 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:38:45,464 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:38:45,464 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:38:45,464 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:38:45,505 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:38:45,505 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:38:45,507 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:38:45,590 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:38:45,604 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:38:45,605 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:38:45,607 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+23:39:41,088 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:39:41,229 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:39:41,231 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:39:41,231 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:39:41,232 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:39:41,232 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:39:41,232 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:39:41,275 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:39:41,276 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:39:41,278 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:39:41,358 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:39:41,371 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:39:41,372 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:39:41,373 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+23:45:47,528 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:45:47,677 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:45:47,678 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:45:47,678 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:45:47,679 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:45:47,679 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:45:47,679 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:45:47,719 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:45:47,720 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:45:47,721 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:45:47,813 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:45:47,823 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:45:47,824 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:45:47,826 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+23:47:37,767 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:47:37,930 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:47:37,932 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:47:37,932 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:47:37,932 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:47:37,932 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:47:37,932 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:47:37,984 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:47:37,984 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:47:37,986 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:47:38,089 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:47:38,105 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:47:38,107 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:47:38,110 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+23:48:07,805 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:48:07,953 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:48:07,954 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:48:07,954 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:48:07,954 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:48:07,955 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:48:07,955 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:48:07,995 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:48:07,996 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:48:07,997 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:48:08,083 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:48:08,098 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:48:08,099 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:48:08,101 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+23:58:28,742 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+23:58:28,895 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+23:58:28,896 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+23:58:28,897 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+23:58:28,897 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+23:58:28,897 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+23:58:28,897 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+23:58:28,936 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+23:58:28,937 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+23:58:28,938 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+23:58:29,031 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+23:58:29,044 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+23:58:29,046 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+23:58:29,048 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+14:03:54,338 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+14:04:43,130 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+14:04:43,690 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+14:04:43,707 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+14:04:43,708 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+14:04:43,708 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+14:04:43,708 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+14:04:43,708 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+14:04:43,783 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+14:04:43,784 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+14:04:43,787 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+14:04:44,256 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+14:04:44,266 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+14:04:44,268 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+14:04:44,269 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+14:05:08,637 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+14:05:08,797 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+14:05:08,798 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+14:05:08,798 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+14:05:08,798 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+14:05:08,799 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+14:05:08,799 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+14:05:08,839 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+14:05:08,840 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+14:05:08,843 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+14:05:08,928 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+14:05:08,940 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+14:05:08,941 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+14:05:08,943 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+14:06:12,425 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer : Using ClassEnhancer "ASM" for API "JDO"
+14:06:12,588 (main) WARN  [DataNucleus.Plugin] - Extension Point "org.eclipse.jdt.apt.core.annotationProcessorFactory" not registered, but plugin "org.sonatype.inject" defined in file:/C:/Users/John/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar refers to it.
+14:06:12,589 (main) ERROR [DataNucleus.Plugin] - Bundle "org.datanucleus.api.jdo" requires "org.datanucleus" version "3.2.4" but the resolved bundle has version "3.2.4" which is outside the expected range.
+14:06:12,590 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guava" but it cannot be resolved.
+14:06:12,590 (main) ERROR [DataNucleus.Plugin] - Bundle "org.sonatype.inject" requires "org.sonatype.sisu.guice" but it cannot be resolved.
+14:06:12,590 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.equinox.registry" but it cannot be resolved
+14:06:12,590 (main) INFO  [DataNucleus.Plugin] - Bundle "org.datanucleus" has an optional dependency to "org.eclipse.core.runtime" but it cannot be resolved
+14:06:12,631 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.sql.allowAllSQLStatements unknown - will be ignored
+14:06:12,632 (main) INFO  [DataNucleus.Persistence] - Property datanucleus.rdbms.stringDefaultLength unknown - will be ignored
+14:06:12,634 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 1.1.4) : Enhancement of classes
+14:06:12,726 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.config.AppConfig" has no MetaData or annotations.
+14:06:12,737 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.apicontroller.ApiController" has no MetaData or annotations.
+14:06:12,739 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.controller.QueryResult" has no MetaData or annotations.
+14:06:12,741 (main) INFO  [DataNucleus.MetaData] - Class "com.foodie.model.Menu" has no MetaData or annotations.
+16:58:36,428 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.2.5) for API "JDO" using JRE "1.6"

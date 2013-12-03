@@ -1,0 +1,119 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div id = "content">
+	<div id="above">
+		<div id="rstrnt_info">
+			<table id="tbl_rstrnt_info">
+				<tr>
+					<td><img id="restaurant_logo" src="order_food/placeholder_logo.png"/></td>
+					<td><p id="rstrnt_name">外卖店名字</p></td>
+				</tr>
+				<tr>
+					<td><p id="rstrnt_addrss">外卖店地址123</p></td>
+				<tr/>
+				<tr>
+					<td><p id="rstrnt_stars">stars</p></td>
+				<tr/>
+				<tr>
+					<td>电话</td>
+					<td>12312</td>
+				</tr>
+				<tr>
+					<td>邮件</td>
+					<td>12312</td>
+				</tr>
+				<tr>
+					<td>开业时间</td>
+					<td>12312</td>
+				</tr>
+				
+		  </table>
+		</div><!-- end rstrnt_info-->
+		<div id="rcmmndtn_sec">
+			<img id="discnt_image" src="order_food/discntDiv.jpg"/><br/>
+			<img id="discnt_image" src="order_food/discntDiv.jpg"/>
+		</div><!-- end rcmmndtn_sec-->
+	</div><!-- end above-->
+	<div id="middle">
+		<div id="menu_info">
+			<table id="menu_table">
+				<thead>
+					<tr><th>图片</th><th>菜品</th><th>价格</th><th>添加</th></tr>
+				</thead>
+				<tbody data-bind="foreach: menuItems">
+					<tr>
+						<td><img src="order_food/placeholder_logo.png"/></td>
+						<td data-bind="text: itemName"></td>
+						<td data-bind="text: itemPrice"></td>
+						<td>plus</td>
+					</tr>
+				</tbody>
+			
+			</table>
+		</div><!-- end menu_info-->
+		<div id="order_info">
+			<table id="order_table">
+				<thead><tr><th colspan="5">您的订单</th></tr></thead>
+				<tbody>
+				<tr>
+					<td>某菜</td>
+					<td><img src="order_food/X_logo.png" /></td>
+					<td>1</td>
+					<td><del>￥8</del></td>
+					<td>￥6</td>
+				</tr>
+				<tr>
+					<td>某菜</td>
+					<td><img src="order_food/X_logo.png" /></td>
+					<td>1</td>
+					<td><del>￥8.00</del></td>
+					<td>￥6.00</td>
+				</tr>
+				</tbody>
+				<tfoot>
+				
+				<tr>
+					<td colspan="5"></td>
+				</tr>
+				<tr>
+					<td  colspan="3"></td>
+					<td >总额：</td>
+					<td >￥12.00</td>
+				</tr>
+				</tfoot>
+			</table>
+		</div><!-- end order_info-->
+	</div><!-- end middle-->
+	<div id="comment_section">
+		<h2 id="rst_cmt_name">某某店的评论</h2>
+		<select>
+			<option>按时间</option>
+			<option>按评分</option>
+		</select>
+		<p><a href="#">写评论</a></p>
+		<div id="comment_detail">
+			<p id="comment_made_time">2013-01-01 13:00</p>
+			<p id="comment_maker_name">呆呆的stone</p>
+			<dl>
+				<dt>真好吃</dt>
+				<dd>太好吃了，以后一定常来</dd>
+			</dl>
+		</div>
+		<div id="customer_rating">
+			<table border="1">
+				<tr>
+					<td>味道</td>
+					<td>3</td>
+					<td rowspan="3">3</td>
+				</tr>
+				<tr>
+					<td>分量</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>速度</td>
+					<td>3</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div><!-- end content-->
