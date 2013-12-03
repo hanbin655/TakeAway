@@ -39,17 +39,7 @@
 							<td><p id="rstrnt_name" data-bind="text: restaurantInfo.name"></p></td>
 						</tr>
 						<tr>
-							<td data-bind="starRating: restaurantInfo.score">
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="0.5"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="1.0"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="1.5"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="2.0"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="2.5"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="3.0"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="3.5"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="4.0"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="4.5"/>
-								<input name="star_rating" type="radio" class="my_rating star {split:2}"  value="5.0"/>
+							<td data-bind="starRating: restaurantInfo.score + ' my_rating'">
 								<p id="rstrnt_score" data-bind="text: restaurantInfo.score"></p>
 							</td>
 						<tr/>
@@ -202,49 +192,16 @@
 							<table class="table table-bordered">
 					 			<tr>
 									<td>味道</td>
-									<td data-bind="starRating: flavor_score">
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="0.5"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.0"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.5"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.0"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.5"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.0"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.5"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.0"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.5"/>
-										<input name="flavor_star_rating" type="radio" class="my_rating1 star {split:2}"  value="5.0"/>
-									</td>
+									<td data-bind="starRating: flavor_score+' flavor_rating'+$index()"></td>
 									<td rowspan="3" id="average_score"><p data-bind="text: average_score"></p></td>
 								</tr>
 								<tr>
 									<td>分量</td>
-									<td data-bind="starRating: quantity_score">
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="0.5"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.0"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.5"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.0"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.5"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.0"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.5"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.0"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.5"/>
-										<input name="quantity_star_rating" type="radio" class="my_rating1 star {split:2}"  value="5.0"/>
-									</td>
+									<td data-bind="starRating: quantity_score+' quantity_rating'+$index()"></td>
 								</tr>
 								<tr>
 									<td>速度</td>
-									<td data-bind="starRating: timing_score">
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="0.5"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.0"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="1.5"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.0"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="2.5"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.0"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="3.5"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.0"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="4.5"/>
-										<input name="timing_star_rating" type="radio" class="my_rating1 star {split:2}"  value="5.0"/>
-									</td>
+									<td data-bind="starRating: timing_score+' timing_rating'+$index()"></td>
 								</tr>
 							</table>
 						</div>
@@ -266,12 +223,11 @@
     <script type="text/javascript" src="../script/jquery/jquery.MetaData.js"></script>
     <script src="../content/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="../script/common/init.js"></script>
-    
-
     <script type="text/javascript" src="../script/knockout/knockout-2.3.0.js"></script>
+    <script type="text/javascript" src="../script/knockout/knockout-customBindings.js"></script> 	
     <script type="text/javascript" src="../script/common/formatHelper.js"></script>
     <script type="text/javascript" src="../script/common/apiProxy.js"></script>
-   
+	<script type="text/javascript" src="../script/common/commonFunction.js"></script>
     <script type="text/javascript" src="../script/pageScript/item_selection.js"></script>
 
 </body>
