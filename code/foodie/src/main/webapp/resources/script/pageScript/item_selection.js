@@ -1,51 +1,3 @@
-ko.bindingHandlers.starRating = {
-    init: function(element, valueAccessor) {
-    	maxRate = 5;
-    	                
-    },
-    update: function(element, valueAccessor) {
-        var target_score = valueAccessor();
-        //var observable = valueAccessor();
-        //var values = observable.split(" ",2);
-        //var target_score = values[0];
-        //var class_name = values[1];
-        //console.log(observable);
-    	target_score = parseDataIntoNumber(target_score,maxRate);
-
-    	if (target_score != 0){
-
-    		rate_idx = parseFloat((target_score*2).toFixed(0));
-    		//console.log(rate_idx);
-    		rate_idx = rate_idx/2;
-    		rate_idx = rate_idx.toFixed(1);
-    		//console.log($("input." + class_name));
-    		console.log("rate_idx: "+ rate_idx);
-    		$(element).find("div").each(function(index, element){
-    			if($(element).hasClass("rating-cancel")) {
-    				$(element).css("display","none")
-    			}else if($(element).hasClass("star")){
-    				$(element).addClass("star-rating-readonly");
-    				var tmp_val = $(element).children("a").first().attr("title");
-    				console.log("tmp_val: "+ tmp_val);
-    				if( tmp_val <= rate_idx){
-    					$(element).addClass("star-rating-on");
-    					console.log("on");
-    				}
-    			};
-    			console.log($(element));
-    			
-    		});
-    		//$("input." + class_name).rating("enable");
-    		//$("input." + class_name).rating('select',rate_idx);
-    		//$("input." + class_name).rating('disable')
-    		$(element).children('input.star').rating("enable");
-    		$(element).children('input.star').rating('select',rate_idx);
-    		$(element).children('input.star').rating('disable')
-    	}
-    }    
-};
-
-
 function renderPage() {
     console.log("Start calling api");   
     viewModel = new localViewModel();
@@ -168,25 +120,4 @@ function computeAverageScore(tmpData) {
 		tmp.average_score = tmp_data.toFixed(1); 
 		//console.log(tmp.average_score)
 	}
-}
-
-function parseDataIntoNumber(in_value,max_value) {
-	var result = 0;
-	if (typeof(in_value) != typeof(1)) {
-		try{
-			result = parseFloat(in_value);
-		}catch(err) {
-			result = 0;
-		}
-	}else {
-		if (in_value > max_value) {
-			result = 0;
-		}else if (in_value < 0) {
-			in_value = 0;
-		}else {
-			result = in_value;
-		}
-	}
-	return result;
-
 }
